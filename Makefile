@@ -53,7 +53,7 @@ compile_FPGA:
 	@make -C ./FPGA compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 hw_link:
-	@make -C ./hw all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
+	@make -C ./Linking all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 ## Build software object
 build_sw: 
@@ -68,7 +68,7 @@ NAME := hw_build
 #
 pack:
 	@cp sw/host_overlay.exe build/$(NAME)/
-	@cp hw/overlay_hw.xclbin build/$(NAME)/
+	@cp Linking/overlay_hw.xclbin build/$(NAME)/
 #
 build_and_pack:
 	@echo ""
@@ -93,7 +93,7 @@ clean_FPGA:
 	@make -C ./FPGA clean
 
 clean_hw:
-	@make -C ./hw clean
+	@make -C ./Linking clean
 
 clean_sw: 
 	@make -C ./sw clean

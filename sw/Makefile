@@ -60,8 +60,8 @@ $(EXECUTABLE): $(HOST_SRCS)
 	$(CXX) -o $(EXECUTABLE) $^ $(CXXFLAGS) $(LDFLAGS) 
 	@rm -f ./overlay_hw.xclbin
 	@rm -f ./overlay_hw_emu.xclbin
-	@ln -s ../hw/overlay_hw.xclbin
-	@ln -s ../hw/overlay_hw_emu.xclbin
+	@ln -s ../Linking/overlay_hw.xclbin
+	@ln -s ../Linking/overlay_hw_emu.xclbin
 
 ################## clean up
 clean:
