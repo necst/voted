@@ -33,3 +33,7 @@ aie/*.log
 aie/*.jou
 aie/*.str
 aie/temp
+FPGA/*.csv
+FPGA/*.log
+FPGA/*.jou
+FPGA/*.str
