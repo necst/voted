@@ -1,4 +1,4 @@
-# AutomationTemplate - FPGA101 Versal Class
+# VOTED_Versal-Optimization-Toolkit-for-Education-ed-Heterogeneous-System-Development - FPGA101 Versal Class
 
 ## Info & Description
 This repository contains the main infrastructure for an AIE-PL project, providing simple automation for testing your code.
