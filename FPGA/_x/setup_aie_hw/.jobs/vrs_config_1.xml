@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<Runs Version="1" Minor="0">
-	<Run Id="setup_aie" LaunchDir="/home/users/giuseppe.sorrentino/VOTED/FPGA/_x/setup_aie_hw/setup_aie" FlowId="Build_IP" FromStepId="vitis_hls" ToStepId="vitis_hls"/>
-</Runs>
-

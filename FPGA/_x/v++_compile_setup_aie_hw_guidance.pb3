@@ -1,3 +1,0 @@
-
-£
-v++_compile_setup_aie_hw$cda59e1a-8fc1-429a-8a76-f1b863cacbf8"à/xilinx/software/Vitis/2022.2/bin/unwrapped/lnx64.o/v++  --vivado.prop "run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}" --advanced.misc "report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}" --advanced.misc "report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}" --platform null -t hw -s -g --kernel setup_aie -c -o setup_aie_hw.xo setup_aie.cpp 
