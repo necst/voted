@@ -1,0 +1,147 @@
+
+
+================================================================
+== Vitis HLS Report for 'setup_aie_Pipeline_VITIS_LOOP_53_1'
+================================================================
+* Date:           Thu Oct 17 12:34:46 2024
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        setup_aie
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: versal
+* Target device:  xcvc1902-vsvd1760-2MP-e-S
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.433 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_53_1  |        ?|        ?|         2|          1|          1|     ?|       yes|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 2, States = { 1 2 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.35>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%j = alloca i32 1"   --->   Operation 5 'alloca' 'j' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%size_loop_read = read i31 @_ssdm_op_Read.ap_auto.i31, i31 %size_loop"   --->   Operation 6 'read' 'size_loop_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%sext_ln53_read = read i60 @_ssdm_op_Read.ap_auto.i60, i60 %sext_ln53"   --->   Operation 7 'read' 'sext_ln53_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%sext_ln53_cast = sext i60 %sext_ln53_read"   --->   Operation 8 'sext' 'sext_ln53_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %s, void @empty_9, i32 0, i32 0, void @empty_10, i32 0, i32 0, void @empty_14, void @empty_14, void @empty_14, i32 0, i32 0, i32 0, i32 0, void @empty_14, void @empty_14, i32 4294967295, i32 0"   --->   Operation 9 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %gmem0, void @empty_7, i32 0, i32 0, void @empty_14, i32 64, i32 100, void @empty, void @empty_0, void @empty_14, i32 16, i32 16, i32 16, i32 16, void @empty_14, void @empty_14, i32 4294967295, i32 0"   --->   Operation 10 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.46ns)   --->   "%store_ln0 = store i30 0, i30 %j"   --->   Operation 11 'store' 'store_ln0' <Predicate = true> <Delay = 0.46>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%br_ln0 = br void %for.inc"   --->   Operation 12 'br' 'br_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%j_load = load i30 %j"   --->   Operation 13 'load' 'j_load' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.89ns)   --->   "%add_ln53 = add i30 %j_load, i30 1"   --->   Operation 14 'add' 'add_ln53' <Predicate = true> <Delay = 0.89> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.89> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%j_cast = zext i30 %j_load"   --->   Operation 15 'zext' 'j_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.71ns)   --->   "%icmp_ln53 = icmp_slt  i31 %j_cast, i31 %size_loop_read" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53]   --->   Operation 16 'icmp' 'icmp_ln53' <Predicate = true> <Delay = 0.71> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.71> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%br_ln53 = br i1 %icmp_ln53, void %for.end.loopexit.exitStub, void %for.inc.split" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53]   --->   Operation 17 'br' 'br_ln53' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.46ns)   --->   "%store_ln53 = store i30 %add_ln53, i30 %j" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53]   --->   Operation 18 'store' 'store_ln53' <Predicate = (icmp_ln53)> <Delay = 0.46>
+
+State 2 <SV = 1> <Delay = 2.43>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i128 %gmem0"   --->   Operation 19 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%gmem0_addr = getelementptr i128 %gmem0, i64 %sext_ln53_cast" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53]   --->   Operation 20 'getelementptr' 'gmem0_addr' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%specpipeline_ln0 = specpipeline void @_ssdm_op_SpecPipeline, i32 4294967295, i32 0, i32 1, i32 0, void @p_str"   --->   Operation 21 'specpipeline' 'specpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%specloopname_ln53 = specloopname void @_ssdm_op_SpecLoopName, void @empty_13" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53]   --->   Operation 22 'specloopname' 'specloopname_ln53' <Predicate = (icmp_ln53)> <Delay = 0.00>
+ST_2 : Operation 23 [1/1] (2.43ns)   --->   "%p_Result_s = read i128 @_ssdm_op_Read.m_axi.p1i128, i128 %gmem0_addr" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:54]   --->   Operation 23 'read' 'p_Result_s' <Predicate = (icmp_ln53)> <Delay = 2.43> <CoreInst = "m_axi">   --->   Core 125 'm_axi' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%write_ln58 = write void @_ssdm_op_Write.axis.volatile.i128P128A, i128 %s, i128 %p_Result_s" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:58]   --->   Operation 24 'write' 'write_ln58' <Predicate = (icmp_ln53)> <Delay = 0.00> <CoreInst = "axis">   --->   Core 127 'axis' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%br_ln53 = br void %for.inc" [/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53]   --->   Operation 25 'br' 'br_ln53' <Predicate = (icmp_ln53)> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 26 'ret' 'ret_ln0' <Predicate = (!icmp_ln53)> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.33ns, clock uncertainty: 0.9ns.
+
+ <State 1>: 1.35ns
+The critical path consists of the following:
+	'alloca' operation ('j') [5]  (0 ns)
+	'load' operation ('j_load') on local variable 'j' [14]  (0 ns)
+	'add' operation ('add_ln53') [15]  (0.89 ns)
+	'store' operation ('store_ln53', /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53) of variable 'add_ln53' on local variable 'j' [26]  (0.462 ns)
+
+ <State 2>: 2.43ns
+The critical path consists of the following:
+	'getelementptr' operation ('gmem0_addr', /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53) [18]  (0 ns)
+	bus read operation ('__Result__', /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:54) on port 'gmem0' (/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:54) [24]  (2.43 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

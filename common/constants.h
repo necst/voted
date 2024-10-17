@@ -22,11 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/***************************************************************
-*
-* Configuration header file for Versal 3D Image Registration
-*
-****************************************************************/
+// This file can be used to define constants that are used in the code.
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 

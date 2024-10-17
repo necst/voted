@@ -1,0 +1,773 @@
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:26:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int.h:12:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h:678:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=and_reduce_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h:692:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=or_reduce_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h:706:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=xor_reduce_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1066:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:45:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/utils/x_hls_utils.h:250:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=reg_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/utils/x_hls_utils.h:251:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=latency_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=reg_XLX_SEP_ PragmaOptions=min=1 max=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS LATENCY min=1 max=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/utils/x_hls_utils.h:252:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=reg_XLX_SEP_ PragmaOptions=off_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INLINE off
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1066:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:116:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=swap_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=swap_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:117:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_cos_K0 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_cos_K0 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:118:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_cos_K1 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_cos_K1 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:119:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_cos_K2 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_cos_K2 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:120:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_cos_K3 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_cos_K3 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:121:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_cos_K4 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_cos_K4 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:151:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::cos_K0 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::cos_K0 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:152:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::cos_K1 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::cos_K1 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:153:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::cos_K2 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::cos_K2 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:154:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::cos_K3 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::cos_K3 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:155:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::cos_K4 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::cos_K4 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:156:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_K0 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_K0 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:157:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_K1 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_K1 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:158:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_K2 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_K2 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:159:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_K3 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_K3 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:160:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=fourth_order_double::sin_K4 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=fourth_order_double::sin_K4 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:209:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=swap_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=swap_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:210:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::sin_cos_K0 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::sin_cos_K0 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:211:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::sin_cos_K1 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::sin_cos_K1 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:212:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::sin_cos_K2 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::sin_cos_K2 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:239:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::cos_K0 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::cos_K0 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:240:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::cos_K1 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::cos_K1 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:241:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::cos_K2 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::cos_K2 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:242:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::sin_K0 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::sin_K0 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:243:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::sin_K1 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::sin_K1 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:244:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sincos_approximation_XLX_SEP_ PragmaOptions=variable=second_order_float::sin_K2 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=second_order_float::sin_K2 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:280:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=first_order_fixed_16::sin_cos_K0 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=first_order_fixed_16::sin_cos_K0 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:281:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=bind_storage_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sin_or_cos_approximation_XLX_SEP_ PragmaOptions=variable=first_order_fixed_16::sin_cos_K1 type=ROM_1P impl=LUTRAM_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS BIND_STORAGE variable=first_order_fixed_16::sin_cos_K1 type=ROM_1P impl=LUTRAM
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:310:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=swap_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=swap_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:311:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=neg_sin_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=neg_sin_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:312:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=neg_cos_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=neg_cos_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:382:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=swap_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=swap_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:383:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=neg_sin_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=neg_sin_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:384:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=neg_cos_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=neg_cos_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:453:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=neg_sin_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=neg_sin_table complete
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hotbm_apfixed.h:454:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinf_or_cosf_XLX_SEP_ PragmaOptions=variable=neg_cos_table complete_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS array_partition variable=neg_cos_table complete
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1066:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:88:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=cordic_circ_apfixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:146:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=doublecordic_apfixed_XLX_SEP_ PragmaOptions=II=5_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=5
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:149:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=doublecordic_apfixed_XLX_SEP_ PragmaOptions=II=3_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=3
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:152:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=doublecordic_apfixed_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:155:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=doublecordic_apfixed_XLX_SEP_ PragmaOptions=II=4_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=4
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:316:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_tan_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:476:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_tanpi_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:656:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_atan2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:660:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_atan2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:867:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinh_cosh_range_redux_cordic_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_cordic_apfixed.h:886:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sinh_cosh_range_redux_cordic_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1067:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:41:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:95:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:101:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:105:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:172:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:178:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:182:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:197:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:205:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:270:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:276:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:280:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:295:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:303:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:532:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:538:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:542:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:552:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:556:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:566:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:574:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:935:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:941:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:945:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:959:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1061:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1067:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1071:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1158:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1164:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1168:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1187:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1194:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1310:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1316:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1320:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1340:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1347:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1609:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1615:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1619:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1643:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:1650:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2080:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2086:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2090:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp_core_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2220:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2227:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2231:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2278:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2285:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2289:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2307:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2362:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2369:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2373:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2391:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2480:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2487:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2491:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2501:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2505:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2516:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2524:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2849:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2856:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2860:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2948:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2955:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2959:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:2974:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3006:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3013:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3017:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3032:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3082:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3089:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3093:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3108:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3245:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3252:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3256:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3271:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3431:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3438:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_exp_apfixed.h:3442:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=exp10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1068:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_log_apfixed.h:501:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=log_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_log_apfixed.h:730:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=log_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_log_apfixed.h:818:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=log10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_log_apfixed.h:948:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=log10_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_log_apfixed.h:1094:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=log2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_log_apfixed.h:1372:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=log2_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1069:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_sqrt_apfixed.h:44:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sqrt_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_sqrt_apfixed.h:267:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sqrt_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_sqrt_apfixed.h:295:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=sqrt_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_sqrt_apfixed.h:393:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=rsqrt_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_sqrt_apfixed.h:440:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=recip_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1070:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_round_copysign_apfixed.h:40:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=ceil_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_round_copysign_apfixed.h:57:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=ceil_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_round_copysign_apfixed.h:117:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=trunc_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_round_copysign_apfixed.h:203:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=round_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_round_copysign_apfixed.h:239:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=rint_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1071:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:75:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=pow_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:136:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=pow_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:150:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=pow_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:180:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=pow_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:308:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=pown_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:328:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=pown_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:342:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=pown_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:460:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=rootn_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_pow_apfixed.h:474:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=rootn_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1072:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_diff_apfixed.h:49:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fdim_fixed_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_diff_apfixed.h:60:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=fdim_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_diff_apfixed.h:189:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=maxmag_fixed_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_diff_apfixed.h:210:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=maxmag_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_diff_apfixed.h:255:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=minmag_fixed_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_diff_apfixed.h:275:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=minmag_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1074:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_frexp_apfixed.h:72:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=frexp_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1076:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:43:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:51:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:59:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:67:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:75:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:83:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:91:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:99:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:108:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:116:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:124:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:132:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:140:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:148:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:156:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_isequal_isnotequal_apfixed.h:164:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_isnotequal_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1077:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:41:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_all_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:52:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_all_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:63:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_all_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:74:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_all_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:85:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_any_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:96:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_any_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:107:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_any_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_all_any_apfixed.h:118:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_any_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline II=1
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1078:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_select_bitselect_apfixed.h:65:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_bitselect_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_select_bitselect_apfixed.h:73:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_bitselect_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_select_bitselect_apfixed.h:81:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_bitselect_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_select_bitselect_apfixed.h:88:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_bitselect_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1079:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_erf_apfixed.h:516:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=erfc_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1081:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_lgamma_apfixed.h:43:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=lgamma_generic_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1082:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_tgamma_apfixed.h:44:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=tgamma_generic_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS pipeline
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1084:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_mad_apfixed.h:24:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=generic_mad_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:28:
+In file included from /xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_math.h:1086:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/hls_hypot_apfixed.h:196:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hypot_fixed_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS unroll
+        ^
+In file included from /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:29:
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:76:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_user_ptr_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:80:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_id_ptr_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:84:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_dest_ptr_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:114:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_strb_ptr_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:118:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_user_ptr_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:122:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_id_ptr_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:126:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_dest_ptr_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:132:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_data_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:136:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_keep_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:140:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=get_last_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:145:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=set_data_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:149:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=set_keep_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:153:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=set_last_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:157:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=keep_all_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:163:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=qdma_axis<WData, 0, 0, 0>_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:167:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=qdma_axis<WData, 0, 0, 0>_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:171:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=qdma_axis<WData, 0, 0, 0>_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:176:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=qdma_axis<WData, 0, 0, 0>_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:181:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=qdma_axis<WData, 0, 0, 0>_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:185:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=operator=_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:220:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=empty_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:227:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=full_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:235:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=read_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:245:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=read_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:256:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=write_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:266:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=read_nb_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:281:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=write_nb_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:317:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=empty_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:324:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=full_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:332:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=read_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:342:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=read_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:353:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=write_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:363:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=read_nb_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_axi_sdata.h:379:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=inline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=write_nb_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS inline
+        ^
+/home/users/giuseppe.sorrentino/VOTED/FPGA/_x/setup_aie_hw/setup_aie/setup_aie.tcl:27:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=top_XLX_SEP_ PragmaContext=directive_XLX_SEP_ PragmaFunction=setup_aie_XLX_SEP_ PragmaOptions=name=setup_aie_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLSDIRECTIVE TOP name=setup_aie
+        ^
+/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:37:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=setup_aie_XLX_SEP_ PragmaOptions=m_axi port=input depth=100 offset=slave bundle=gmem0_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface m_axi port=input depth=100 offset=slave bundle=gmem0
+        ^
+/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:38:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=setup_aie_XLX_SEP_ PragmaOptions=axis port=s_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface axis port=s
+        ^
+/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:39:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=setup_aie_XLX_SEP_ PragmaOptions=s_axilite port=input bundle=control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port=input bundle=control
+        ^
+/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:40:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=setup_aie_XLX_SEP_ PragmaOptions=s_axilite port=size bundle=control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port=size bundle=control
+        ^
+/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:41:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=setup_aie_XLX_SEP_ PragmaOptions=s_axilite port=return bundle=control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port=return bundle=control
+        ^
+244 warnings generated.

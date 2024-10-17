@@ -1,0 +1,42 @@
+Begin Function 'setup_aie'
+
+RTL state condition: (1'b1 == ap_CS_fsm_state1)
+# ST_1
+local tmp <bitselect_45> <integer> <> 'bitselect' </home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45>
+tmp /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45
+reg: tmp_reg_248[0:0] lv
+
+local trunc_ln45_1 <partselect_45> <integer> <> 'partselect' </home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45>
+trunc_ln45_1 /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45
+reg: trunc_ln45_1_reg_253[29:0] lv
+
+local trunc_ln45_2 <partselect_45> <integer> <> 'partselect' </home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45>
+trunc_ln45_2 /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45
+reg: trunc_ln45_2_reg_258[29:0] lv
+
+local icmp_ln53 <icmp_53> <integer> <Comparator> 'icmp' </home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53>
+icmp_ln53 /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53
+reg: icmp_ln53_reg_263[0:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_state2)
+# ST_2
+local size_loop <select_45> <integer> <> 'select' </home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45>
+size_loop /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45
+reg: size_loop_reg_268[30:0] lv
+
+local trunc_ln1 <partselect_53> <integer> <> 'partselect' </home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53>
+trunc_ln1 /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53
+reg: trunc_ln1_reg_278[59:0] lv
+
+local empty <select_53> <integer> <> 'select' </home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53>
+empty /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:53
+empty /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp:45
+reg: empty_reg_284[28:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_state74)
+# ST_74
+
+End Function 'setup_aie'
+

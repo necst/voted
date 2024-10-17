@@ -16,7 +16,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.PHONY: help build_hw build_sw testbench_all pack build_and_pack clean clean_aie clean_data_movers clean_hw clean_sw
+.PHONY: help build_hw build_sw testbench_all pack build_and_pack clean clean_aie clean_FPGA clean_hw clean_sw
 
 help:
 	@echo "Makefile Usage:"
@@ -44,13 +44,13 @@ test:
 
 #
 ## Build hardware (xclbin) objects
-build_hw: compile_data_movers compile_aie hw_link
+build_hw: compile_FPGA compile_aie hw_link
 #
 compile_aie:
 	@make -C ./aie aie_compile SHELL_NAME=$(SHELL_NAME)
 #
-compile_data_movers:
-	@make -C ./data_movers compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
+compile_FPGA:
+	@make -C ./FPGA compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 hw_link:
 	@make -C ./hw all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
@@ -61,8 +61,8 @@ build_sw:
 #
 testbench_all:
 	@make -C ./aie aie_compile_x86
-	@make -C ./data_movers testbench_setupaie
-	@make -C ./data_movers testbench_sink_from_aie
+	@make -C ./FPGA testbench_setupaie
+	@make -C ./FPGA testbench_sink_from_aie
 #
 NAME := hw_build
 #
@@ -84,13 +84,13 @@ build_and_pack:
 	@make pack
 
 # Clean objects
-clean: clean_aie clean_data_movers clean_hw clean_sw
+clean: clean_aie clean_FPGA clean_hw clean_sw
 
 clean_aie:
 	@make -C ./aie clean
 
-clean_data_movers:
-	@make -C ./data_movers clean
+clean_FPGA:
+	@make -C ./FPGA clean
 
 clean_hw:
 	@make -C ./hw clean

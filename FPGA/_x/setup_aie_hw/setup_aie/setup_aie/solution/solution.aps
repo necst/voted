@@ -1,0 +1,29 @@
+<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">
+    <name>
+        <value string="solution"/>
+    </name>
+    <project>
+        <value string="setup_aie"/>
+    </project>
+    <flowTarget value="vitis"/>
+    <config>
+        <config_interface m_axi_latency="64" m_axi_alignment_byte_size="64" m_axi_max_widen_bitwidth="512" default_interface="kernel" m_axi_conservative_mode="1" m_axi_addr64="1" m_axi_auto_max_ports="0"/>
+        <config_rtl register_reset_num="3" kernel_profile="1" deadlock_detection="sim"/>
+        <config_dataflow strict_mode="warning"/>
+        <config_debug enable="1"/>
+        <config_export format="xo" ipname="setup_aie"/>
+    </config>
+    <targetInfo>
+        <TargetInfo value="xcvc1902:-vsvd1760:-2MP-e-S"/>
+    </targetInfo>
+    <libraryList>
+        <library value="xilinx/versal/versal" name="DefaultPlatform"/>
+    </libraryList>
+    <clockList>
+        <clock name="default" period="299.996999MHz" default="false"/>
+    </clockList>
+    <ExportDesign askAgain="true" evaluate="false" rtl="verilog" formatName="xo">
+        <Format formatName="xo"/>
+    </ExportDesign>
+</AutoPilot:solution>
+

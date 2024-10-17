@@ -1,0 +1,9 @@
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /home/users/giuseppe.sorrentino/VOTED/FPGA/_x/reports/setup_aie_hw
+	Log files: /home/users/giuseppe.sorrentino/VOTED/FPGA/_x/logs/setup_aie_hw
+INFO: [v++ 60-1548] Creating build summary session with primary output /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie_hw.xo.compile_summary, at Thu Oct 17 12:33:54 2024
+INFO: [v++ 60-1315] Creating rulecheck session with output '/home/users/giuseppe.sorrentino/VOTED/FPGA/_x/reports/setup_aie_hw/v++_compile_setup_aie_hw_guidance.html', at Thu Oct 17 12:33:54 2024
+INFO: [v++ 74-78] Compiler Version string: 2022.2
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_vck5000_gen4x8_qdma_2_202220_1
+INFO: [v++ 60-242] Creating kernel: 'setup_aie'

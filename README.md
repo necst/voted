@@ -8,7 +8,7 @@ this is a useful starting point.
 ## Main Structure
 
 **aie** - contains the code for AI Engine kernels.  
-**data_movers** - contains the PL component.  
+**FPGA** - contains the PL component.  
 **common** - contains some useful included constants and headers.  
 **hw** - contains the cfg file requiered to connect your components.  
 **sw** - contains the software for your application.  
@@ -25,7 +25,7 @@ _make aie_compile SHELL_NAME=< qdma|xdma >_ : compile your code for VLIW archite
 _make aie_simulate_ : simulate your code for VLIW architecture, as your final hardware.  
 _make clean_ : removes all the output file created by the commands listed above.  
 
-### data_movers
+### FPGA
 
 testbench : it contains a testbench for each kernel
 

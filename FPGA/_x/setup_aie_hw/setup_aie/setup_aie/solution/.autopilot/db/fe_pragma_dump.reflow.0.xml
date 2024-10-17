@@ -1,0 +1,16 @@
+<pragmas>
+<pragma file="/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" line="175" pragmaType="inline" parentfunction="ap_int_base<128, true>::ap_int_base()" off="0" region="0" recursive="0"/>
+<pragma file="/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" line="214" pragmaType="inline" parentfunction="ap_int_base<128, false>::ap_int_base(int)" off="0" region="0" recursive="0"/>
+<pragma file="/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h" line="303" pragmaType="inline" parentfunction="ap_range_ref<128, true>::ap_range_ref(ap_int_base<128, true>*, int, int)" off="0" region="0" recursive="0"/>
+<pragma file="" line="0" pragmaType="inline" parentfunction="write" off="0" region="0" recursive="0"/>
+<pragma file="/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" line="1045" pragmaType="inline" parentfunction="range" off="0" region="0" recursive="0"/>
+<pragma file="/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_common.h" line="523" pragmaType="inline" parentfunction="ssdm_int<128, false>::ssdm_int(unsigned __int128)" off="0" region="0" recursive="0"/>
+<pragma file="" line="0" pragmaType="inline" parentfunction="ap_int<128>::ap_int()" off="0" region="0" recursive="0"/>
+<pragma file="/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp" line="37" pragmaType="interface" parentfunction="setup_aie" mode="m_axi" port="input" bundle="gmem0" offset="slave" name="" depth="100" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp" line="38" pragmaType="interface" parentfunction="setup_aie" mode="axis" port="s" register="0" register_mode="both" name="" depth="-1"/>
+<pragma file="/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp" line="39" pragmaType="interface" parentfunction="setup_aie" mode="s_axilite" port="input" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp" line="40" pragmaType="interface" parentfunction="setup_aie" mode="s_axilite" port="size" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp" line="41" pragmaType="interface" parentfunction="setup_aie" mode="s_axilite" port="" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_common.h" line="0" pragmaType="inline" parentfunction="ssdm_int<128, true>::ssdm_int()" off="0" region="0" recursive="0"/>
+<pragma file="/xilinx/software/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h" line="0" pragmaType="inline" parentfunction="ap_range_ref<128, true>::operator=(int)" off="0" region="0" recursive="0"/>
+</pragmas>

@@ -24,10 +24,15 @@
 all: aie_compile aie_simulate
 all_x86: aie_compile_x86 aie_simulate_x86
 
+ifeq ($(findstring 2022.1,$(XILINX_HLS)),2022.1)
+    SHELL_PARAM = xdma
+else
+    SHELL_PARAM = qdma
+endif
 
-ifeq ($(SHELL_NAME), qdma)
+ifeq ($(SHELL_PARAM), qdma)
     PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
-else ifeq ($(SHELL_NAME), xdma)
+else ifeq ($(SHELL_PARAM), xdma)
     PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_xdma_2_202210_1/hw/xilinx_vck5000_gen4x8_xdma_2_202210_1.xsa
 endif
 

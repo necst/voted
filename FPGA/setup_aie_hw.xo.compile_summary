@@ -1,0 +1,117 @@
+<ENTRY>
+{
+ "thisFile": "/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie_hw.xo.compile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Thu Oct 17 12:33:54 2024",
+ "timestampMillis": "1729161234381",
+ "buildStep": {
+  "cmdId": "e3c8facf-f664-4ef5-823d-454cca60691d",
+  "name": "v++",
+  "logFile": "/home/users/giuseppe.sorrentino/VOTED/FPGA/_x/setup_aie_hw/setup_aie_hw.steps.log",
+  "commandLine": "/xilinx/software/Vitis/2022.2/bin/unwrapped/lnx64.o/v++  --vivado.prop \"run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" --platform /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa -t hw -s -g --kernel setup_aie -c -o setup_aie_hw.xo setup_aie.cpp ",
+  "args": [
+   "--platform",
+   "/opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa",
+   "-t",
+   "hw",
+   "-s",
+   "-g",
+   "--kernel",
+   "setup_aie",
+   "-c",
+   "-o",
+   "setup_aie_hw.xo",
+   "setup_aie.cpp"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/users/giuseppe.sorrentino/VOTED/FPGA"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Oct 17 12:33:54 2024",
+ "timestampMillis": "1729161234381",
+ "status": {
+  "cmdId": "e3c8facf-f664-4ef5-823d-454cca60691d",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Thu Oct 17 12:33:58 2024",
+ "timestampMillis": "1729161238669",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa",
+  "hardwareDsa": "",
+  "platformDirectory": "/opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_COMPILE",
+  "target": "TT_HW",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "setup_aie",
+     "file": "/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie_hw.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "Vitis V++ Compiler Release 2022.2. SW Build 3671529 on 2022-10-13-17:52:11"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Thu Oct 17 12:33:58 2024",
+ "timestampMillis": "1729161238672",
+ "buildStep": {
+  "cmdId": "5c8b9971-888e-4af0-8caf-bb9527326ab3",
+  "name": "vitis_hls",
+  "logFile": "/home/users/giuseppe.sorrentino/VOTED/FPGA/_x/setup_aie_hw/setup_aie/vitis_hls.log",
+  "commandLine": "vitis_hls -f /home/users/giuseppe.sorrentino/VOTED/FPGA/_x/setup_aie_hw/setup_aie/setup_aie.tcl -messageDb vitis_hls.pb",
+  "args": [
+   "vitis_hls",
+   "-f",
+   "/home/users/giuseppe.sorrentino/VOTED/FPGA/_x/setup_aie_hw/setup_aie/setup_aie.tcl",
+   "-messageDb",
+   "vitis_hls.pb"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/users/giuseppe.sorrentino/VOTED/FPGA"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Oct 17 12:33:58 2024",
+ "timestampMillis": "1729161238672",
+ "status": {
+  "cmdId": "5c8b9971-888e-4af0-8caf-bb9527326ab3",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>

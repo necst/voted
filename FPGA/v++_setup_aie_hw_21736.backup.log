@@ -1,0 +1,20 @@
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /home/users/giuseppe.sorrentino/VOTED/FPGA/_x/reports/setup_aie_hw
+	Log files: /home/users/giuseppe.sorrentino/VOTED/FPGA/_x/logs/setup_aie_hw
+INFO: [v++ 60-1548] Creating build summary session with primary output /home/users/giuseppe.sorrentino/VOTED/FPGA/setup_aie_hw.xo.compile_summary, at Thu Oct 17 12:33:15 2024
+INFO: [v++ 60-1315] Creating rulecheck session with output '/home/users/giuseppe.sorrentino/VOTED/FPGA/_x/reports/setup_aie_hw/v++_compile_setup_aie_hw_guidance.html', at Thu Oct 17 12:33:15 2024
+ERROR: [v++ 60-1258] No valid platform was found that matches 'null'. Please make sure that the platform is specified correctly, and the platform has the right version number. The platform repo paths are:
+	/xilinx/software/Vitis/2022.2/platforms
+	/opt/xilinx/platforms
+The valid platforms found from the above repo paths are:
+	/opt/xilinx/platforms/xilinx_u200_qdma_201920_1/xilinx_u200_qdma_201920_1.xpfm
+	/opt/xilinx/platforms/xilinx_u200_xdma_201830_2/xilinx_u200_xdma_201830_2.xpfm
+	/opt/xilinx/platforms/xilinx_u250_gen3x16_xdma_4_1_202210_1/xilinx_u250_gen3x16_xdma_4_1_202210_1.xpfm
+	/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+	/opt/xilinx/platforms/xilinx_vck5000_gen3x16_xdma_1_202120_1/xilinx_vck5000_gen3x16_xdma_1_202120_1.xpfm
+	/opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/xilinx_vck5000_gen4x8_qdma_2_202220_1.xpfm
+	/opt/xilinx/platforms/xilinx_vck5000_gen4x8_xdma_2_202210_1/xilinx_vck5000_gen4x8_xdma_2_202210_1.xpfm
+
+ERROR: [v++ 60-587] Failed to add a platform: specified platform null is not found or is not valid
+ERROR: [v++ 60-592] Failed to finish compilation
+INFO: [v++ 60-1653] Closing dispatch client.

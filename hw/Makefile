@@ -35,6 +35,13 @@ help::
 
 SHELL_NAME := null
 PLATFORM := null
+
+ifeq ($(findstring 2022.1,$(XILINX_HLS)),2022.1)
+    SHELL_NAME = xdma
+else
+    SHELL_NAME = qdma
+endif
+
 ifeq ($(SHELL_NAME), qdma)
     PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
 else ifeq ($(SHELL_NAME), xdma)
@@ -46,8 +53,8 @@ TARGET := hw
 XOCCLFLAGS := --kernel_frequency 200 --platform $(PLATFORM) -t $(TARGET)  -s -g
 
 AIE_OBJ := ../aie/libadf.a
-XOS     := ../data_movers/setup_aie_$(TARGET).xo 
-XOS     += ../data_movers/sink_from_aie_$(TARGET).xo 
+XOS     := ../FPGA/setup_aie_$(TARGET).xo 
+XOS     += ../FPGA/sink_from_aie_$(TARGET).xo 
 XSA_OBJ := overlay_$(TARGET).xsa
 XCLBIN  := overlay_$(TARGET).xclbin
 
