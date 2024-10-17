@@ -28,11 +28,11 @@ hw/*.hdf
 hw/*.xsa
 hw/*.xpfm
 hw/*.json
-aie/*.csv
-aie/*.log
-aie/*.jou
-aie/*.str
-aie/temp
+AIE/*.csv
+AIE/*.log
+AIE/*.jou
+AIE/*.str
+AIE/temp
 FPGA/*.csv
 FPGA/*.log
 FPGA/*.jou

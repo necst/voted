@@ -47,7 +47,7 @@ test:
 build_hw: compile_FPGA compile_aie hw_link
 #
 compile_aie:
-	@make -C ./aie aie_compile SHELL_NAME=$(SHELL_NAME)
+	@make -C ./AIE aie_compile SHELL_NAME=$(SHELL_NAME)
 #
 compile_FPGA:
 	@make -C ./FPGA compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
@@ -60,7 +60,7 @@ build_sw:
 	@make -C ./sw all 
 #
 testbench_all:
-	@make -C ./aie aie_compile_x86
+	@make -C ./AIE aie_compile_x86
 	@make -C ./FPGA testbench_setupaie
 	@make -C ./FPGA testbench_sink_from_aie
 #
@@ -87,7 +87,7 @@ build_and_pack:
 clean: clean_aie clean_FPGA clean_hw clean_sw
 
 clean_aie:
-	@make -C ./aie clean
+	@make -C ./AIE clean
 
 clean_FPGA:
 	@make -C ./FPGA clean

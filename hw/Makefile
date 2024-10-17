@@ -52,7 +52,7 @@ TARGET := hw
 
 XOCCLFLAGS := --kernel_frequency 200 --platform $(PLATFORM) -t $(TARGET)  -s -g
 
-AIE_OBJ := ../aie/libadf.a
+AIE_OBJ := ../AIE/libadf.a
 XOS     := ../FPGA/setup_aie_$(TARGET).xo 
 XOS     += ../FPGA/sink_from_aie_$(TARGET).xo 
 XSA_OBJ := overlay_$(TARGET).xsa
