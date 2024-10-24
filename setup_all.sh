@@ -5,7 +5,7 @@ print_usage() {
     echo "Usage: $0 [--shell <qdma|xdma>]"
     echo "Options:"
     echo "  --shell <qdma|xdma>   Specify the shell environment to enable"
-    exit 1
+    return 1
 }
 
 # Variables for the paths of configuration scripts
@@ -45,5 +45,5 @@ else
     source "$VITIS_22_1"
 fi
 
-# Enable the devtoolset-7 development environment
+# Enable the devtoolset-7 development environment for CentOS environments
 scl enable devtoolset-7 bash
