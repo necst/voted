@@ -1,5 +1,6 @@
 # MIT License
-# Copyright (c) 2023 Paolo Salvatore Galfano, Giuseppe Sorrentino
+# Copyright (c) 2024 Paolo Salvatore Galfano, Giuseppe Sorrentino
+# Updates Davide Conficconi
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -44,31 +45,31 @@ test:
 
 #
 ## Build hardware (xclbin) objects
-build_hw: compile_FPGA compile_aie hw_link
+build_hw: compile_fpga compile_aie hw_link
 #
 compile_aie:
-	@make -C ./AIE aie_compile SHELL_NAME=$(SHELL_NAME)
+	@make -C ./aie aie_compile SHELL_NAME=$(SHELL_NAME)
 #
-compile_FPGA:
-	@make -C ./FPGA compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
+compile_fpga:
+	@make -C ./fpga compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 hw_link:
-	@make -C ./Linking all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
+	@make -C ./linking all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 ## Build software object
 build_sw: 
 	@make -C ./sw all 
 #
 testbench_all:
-	@make -C ./AIE aie_compile_x86
-	@make -C ./FPGA testbench_setupaie
-	@make -C ./FPGA testbench_sink_from_aie
+	@make -C ./aie aie_compile_x86
+	@make -C ./fpga testbench_setupaie
+	@make -C ./fpga testbench_sink_from_aie
 #
 NAME := hw_build
 #
 pack:
 	@cp sw/host_overlay.exe build/$(NAME)/
-	@cp Linking/overlay_hw.xclbin build/$(NAME)/
+	@cp linking/overlay_hw.xclbin build/$(NAME)/
 #
 build_and_pack:
 	@echo ""
@@ -87,13 +88,13 @@ build_and_pack:
 clean: clean_aie clean_FPGA clean_hw clean_sw
 
 clean_aie:
-	@make -C ./AIE clean
+	@make -C ./aie clean
 
 clean_FPGA:
-	@make -C ./FPGA clean
+	@make -C ./fpga clean
 
 clean_hw:
-	@make -C ./Linking clean
+	@make -C ./linking clean
 
 clean_sw: 
 	@make -C ./sw clean
