@@ -8,7 +8,7 @@ this is a useful starting point.
 ## Main Structure
 
 **aie** - contains the code for AI Engine kernels.  
-**FPGA** - contains the PL component.  
+**fpga** - contains the PL component.  
 **common** - contains some useful included constants and headers.  
 **linking** - contains the cfg file requiered to connect your components.  
 **sw** - contains the software for your application.  
