@@ -27,15 +27,7 @@ help:
 	@echo "  make clean"
 	@echo ""
 
-TARGET := hw
-SHELL_NAME := null
-PLATFORM := null
-
-ifeq ($(SHELL_NAME), qdma)
-	PLATFORM := xilinx_vck5000_gen4x8_qdma_2_202220_1
-else ifeq ($(SHELL_NAME), xdma)
-	PLATFORM := xilinx_vck5000_gen4x8_xdma_2_202210_1
-endif
+PLATFORM ?= xilinx_vck5000_gen4x8_qdma_2_202220_1
 
 test:
 	@echo "TARGET: $(TARGET)"
@@ -44,31 +36,31 @@ test:
 
 #
 ## Build hardware (xclbin) objects
-build_hw: compile_FPGA compile_aie hw_link
+build_hw: compile_fpga compile_aie hw_link
 #
 compile_aie:
-	@make -C ./AIE aie_compile SHELL_NAME=$(SHELL_NAME)
+	@make -C ./aie aie_compile SHELL_NAME=$(SHELL_NAME)
 #
-compile_FPGA:
-	@make -C ./FPGA compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
+compile_fpga:
+	@make -C ./fpga compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 hw_link:
-	@make -C ./Linking all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
+	@make -C ./linking all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 ## Build software object
 build_sw: 
 	@make -C ./sw all 
 #
 testbench_all:
-	@make -C ./AIE aie_compile_x86
-	@make -C ./FPGA testbench_setupaie
-	@make -C ./FPGA testbench_sink_from_aie
+	@make -C ./aie aie_compile_x86
+	@make -C ./fpga testbench_setupaie
+	@make -C ./fpga testbench_sink_from_aie
 #
 NAME := hw_build
 #
 pack:
 	@cp sw/host_overlay.exe build/$(NAME)/
-	@cp Linking/overlay_hw.xclbin build/$(NAME)/
+	@cp linking/overlay_hw.xclbin build/$(NAME)/
 #
 build_and_pack:
 	@echo ""
@@ -84,16 +76,16 @@ build_and_pack:
 	@make pack
 
 # Clean objects
-clean: clean_aie clean_FPGA clean_hw clean_sw
+clean: clean_aie clean_fpga clean_hw clean_sw
 
 clean_aie:
-	@make -C ./AIE clean
+	@make -C ./aie clean
 
-clean_FPGA:
-	@make -C ./FPGA clean
+clean_fpga:
+	@make -C ./fpga clean
 
 clean_hw:
-	@make -C ./Linking clean
+	@make -C ./linking clean
 
 clean_sw: 
 	@make -C ./sw clean

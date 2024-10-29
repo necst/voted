@@ -25,49 +25,46 @@ ECHO=@echo
 .PHONY: help
 
 help::
-	$(ECHO) ""
 	$(ECHO) "Makefile Usage:"
-	$(ECHO) "  make all TARGET=<hw/hw_emu>"
+	$(ECHO) ""
+	$(ECHO) "  make compile"
+	$(ECHO) "      Command to generate xo kernel file"
 	$(ECHO) ""
 	$(ECHO) "  make clean"
 	$(ECHO) "      Command to remove all the generated files."
-	$(ECHO) ""
 
-SHELL_NAME := null
-PLATFORM := null
 
-ifeq ($(findstring 2022.1,$(XILINX_HLS)),2022.1)
-    SHELL_NAME = xdma
-else
-    SHELL_NAME = qdma
-endif
-
-ifeq ($(SHELL_NAME), qdma)
-    PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
-else ifeq ($(SHELL_NAME), xdma)
-    PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_xdma_2_202210_1/hw/xilinx_vck5000_gen4x8_xdma_2_202210_1.xsa
-endif
+PLATFORM ?= /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
 
 TARGET := hw
 
-XOCCLFLAGS := --kernel_frequency 200 --platform $(PLATFORM) -t $(TARGET)  -s -g
-
-AIE_OBJ := ../AIE/libadf.a
-XOS     := ../FPGA/setup_aie_$(TARGET).xo 
-XOS     += ../FPGA/sink_from_aie_$(TARGET).xo 
-XSA_OBJ := overlay_$(TARGET).xsa
-XCLBIN  := overlay_$(TARGET).xclbin
-
 .phony: clean
 
-all: $(XCLBIN)
+################## hardware build 
 
-$(XCLBIN): $(XSA_OBJ) $(AIE_OBJ)
-	v++ -p -t $(TARGET) -f $(PLATFORM) $^ -o $@ --package.boot_mode=ospi
+XOCCFLAGS := --platform $(PLATFORM) -t $(TARGET)  -s -g
 
-$(XSA_OBJ): $(XOS) $(AIE_OBJ)
-	v++ -l $(XOCCFLAGS) $(XOCCLFLAGS) --config xclbin_overlay.cfg -o $@ $^
+compile: setup_aie_$(TARGET).xo sink_from_aie_$(TARGET).xo 
 
-clean:
-	$(RM) -r _x .Xil .ipcache *.ltx *.log *.sh *.jou *.info *.xclbin *.xo.* *.str *.xsa *.cdo.bin *bif *BIN *.package_summary *.link_summary *.txt *.bin && rm -rf cfg emulation_data sim
+setup_aie_$(TARGET).xo: ./setup_aie.cpp
+	v++ $(XOCCFLAGS) --kernel setup_aie -c -o $@ $<
+
+sink_from_aie_$(TARGET).xo: ./sink_from_aie.cpp
+	v++ $(XOCCFLAGS) --kernel sink_from_aie -c -o $@ $<
+
+# as every C++ program, you may add libraies like: `pkg-config --libs opencv` `pkg-config --cflags opencv`
+testbench_sink_from_aie: testbench/testbench_sink_from_aie.cpp
+	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -o testbench/$@ $^ -O2  
 	
+run_testbench_sink_from_aie: testbench_sink_from_aie
+	cd testbench && ./testbench_sink_from_aie 
+
+testbench_setupaie: testbench/testbench_setupaie.cpp
+	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -o testbench/$@ $^ -O2
+
+run_testbench_setupaie: testbench_setupaie
+	cd testbench && ./testbench_setupaie
+
+################## clean up
+clean:
+	$(RM) -rf *.xo *.xclbin *.xclbin.info *.xclbin.link_summary *.jou *.log *.xo.compile_summary _x .Xil

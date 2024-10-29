@@ -7,13 +7,13 @@ this is a useful starting point.
 
 ## Main Structure
 
-**AIE** - contains the code for AI Engine kernels.  
+**aie** - contains the code for AI Engine kernels.  
 **FPGA** - contains the PL component.  
 **common** - contains some useful included constants and headers.  
-**Linking** - contains the cfg file requiered to connect your components.  
+**linking** - contains the cfg file requiered to connect your components.  
 **sw** - contains the software for your application.  
 
-### AIE
+### aie
 data - contains the input source for your simulation.  
 src - contains the code.  
 
@@ -35,7 +35,7 @@ _make compile TARGET=HW/HW_EMU_ _SHELL_NAME=< qdma|xdma >_ : it compiles all you
 _make run_testbench_setup_aie_ : compiles and execute the testbench for the kernel setup_aie.  
 _make run_testbench_sink_from_aie_ : compiles and execute the testbench for the kernel setup_aie.  
 
-### Linking
+### linking
 
 Contains the cfg file required to link the components. For the Versal case, you have also to link the AI Engine.
 

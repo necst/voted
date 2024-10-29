@@ -44,9 +44,9 @@ int main(int argc, char *argv[]) {
     // I have to read the output of AI Engine from the file. 
     // Otherwise, I have no input for my testbench
     std::ifstream file;
-    file.open("../../AIE/x86simulator_output/data/out_plio_sink_1.txt");
+    file.open("../../aie/x86simulator_output/data/out_plio_sink_1.txt");
     if (!file) {
-        std::cerr << "Unable to open file ../../AIE/x86simulator_output/out_plio_sink.txt";
+        std::cerr << "Unable to open file ../../aie/x86simulator_output/out_plio_sink.txt";
         return 1;
     }
 
