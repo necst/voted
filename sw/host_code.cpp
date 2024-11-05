@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
     int32_t output_buffer[size];
     buffer_sink_from_aie.read(output_buffer);
 
-    // ---------------------------------CONFRONTO PER VERIFICARE L'ERRORE--------------------------------------
+    // ---------------------------------Error Check--------------------------------------
         
     // Here there should be a code for checking correctness of your application, like a software application
 
