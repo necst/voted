@@ -34,7 +34,7 @@ help::
 	$(ECHO) ""
 
 
-PLATFORM ?= /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
+PLATFORM ?= xilinx_vck5000_gen4x8_qdma_2_202220_1
 
 TARGET := hw
 
