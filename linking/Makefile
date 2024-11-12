@@ -1,6 +1,6 @@
 # MIT License
 
-# Copyright (c) 2023 Paolo Salvatore Galfano, Giuseppe Sorrentino
+# Copyright (c) 2024 Paolo Salvatore Galfano, Giuseppe Sorrentino, Davide Conficconi
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -33,28 +33,31 @@ help::
 	$(ECHO) "      Command to remove all the generated files."
 	$(ECHO) ""
 
-SHELL_NAME := null
-PLATFORM := null
+SHELL_NAME := xdma
+# PLATFORM := null
 
-ifeq ($(findstring 2022.1,$(XILINX_HLS)),2022.1)
-    SHELL_NAME = xdma
-else
-    SHELL_NAME = qdma
-endif
+# ifeq ($(findstring 2022.1,$(XILINX_HLS)),2022.1)
+#     SHELL_NAME = xdma
+# else
+#     SHELL_NAME = qdma
+# endif
 
-ifeq ($(SHELL_NAME), qdma)
-    PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
-else ifeq ($(SHELL_NAME), xdma)
-    PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_xdma_2_202210_1/hw/xilinx_vck5000_gen4x8_xdma_2_202210_1.xsa
-endif
+# ifeq ($(SHELL_NAME), qdma)
+#     PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
+# else ifeq ($(SHELL_NAME), xdma)
+#     PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_xdma_2_202210_1/hw/xilinx_vck5000_gen4x8_xdma_2_202210_1.xsa
+# endif
 
-TARGET := hw
+PLATFORM := /opt/xilinx/platforms/xilinx_u250_gen3x16_xdma_4_1_202210_1/xilinx_u250_gen3x16_xdma_4_1_202210_1.xpfm
+
+
+TARGET := hw_emu
 
 XOCCLFLAGS := --kernel_frequency 200 --platform $(PLATFORM) -t $(TARGET)  -s -g
 
-AIE_OBJ := ../AIE/libadf.a
-XOS     := ../FPGA/setup_aie_$(TARGET).xo 
-XOS     += ../FPGA/sink_from_aie_$(TARGET).xo 
+AIE_OBJ := ../aie/libadf.a
+XOS     := ../fpga/setup_aie_$(TARGET).xo 
+XOS     += ../fpga/sink_from_aie_$(TARGET).xo 
 XSA_OBJ := overlay_$(TARGET).xsa
 XCLBIN  := overlay_$(TARGET).xclbin
 

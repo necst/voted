@@ -28,6 +28,7 @@ while [[ $# -gt 0 ]]; do
             # Unknown option
             echo "Error: Unknown option $1"
             print_usage
+            return 1
             ;;
     esac
 done

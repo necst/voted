@@ -34,6 +34,10 @@ help::
 
 .phony: clean
 
+EMCONFIG_FILE := emconfig.json
+PLATFORM := /opt/xilinx/platforms/xilinx_u250_gen3x16_xdma_4_1_202210_1/xilinx_u250_gen3x16_xdma_4_1_202210_1.xpfm
+DEVICE := xilinx_u250_gen3x16_xdma_4_1_202210_1
+
 ################## software build for XRT Native API code
 CXXFLAGS := -std=c++17 -Wno-deprecated-declarations
 CXXFLAGS += -I$(XILINX_XRT)/include -I$(XILINX_HLS)/include
@@ -50,9 +54,10 @@ EXECUTABLE := host_overlay.exe
 HOST_SRCS := ./host_code.cpp
 
 all: build_sw
+
 build_sw: $(EXECUTABLE)
 
-run_sw:
+run_sw: $(EXECUTABLE)
 	./$(EXECUTABLE)
 
 #Eventually add LIBS and CFLAGS
@@ -60,10 +65,12 @@ $(EXECUTABLE): $(HOST_SRCS)
 	$(CXX) -o $(EXECUTABLE) $^ $(CXXFLAGS) $(LDFLAGS) 
 	@rm -f ./overlay_hw.xclbin
 	@rm -f ./overlay_hw_emu.xclbin
-	@ln -s ../Linking/overlay_hw.xclbin
-	@ln -s ../Linking/overlay_hw_emu.xclbin
+	@ln -s ../linking/overlay_hw.xclbin
+	@ln -s ../linking/overlay_hw_emu.xclbin
 
 ################## clean up
 clean:
-	$(RM) -r _x .Xil *.ltx *.log *.jou *.info host_overlay.exe *.xo *.xo.* *.str *.xclbin .run *.wdb *.json *.wcfg *.protoinst *.csv
+	$(RM) -r _x .Xil *.ltx *.log *.jou *.info host_overlay.exe *.xo *.xo.* *.str *.xclbin .run *.wdb *.json *.wcfg *.protoinst *.csv $(EMCONFIG_FILE)
 	
+$(EMCONFIG_FILE):
+	$(EMCONFIGUTIL) --nd 1 --od . --platform $(DEVICE)
