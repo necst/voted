@@ -38,6 +38,7 @@ PLATFORM ?= xilinx_vck5000_gen4x8_qdma_2_202220_1
 
 TARGET := hw
 
+# Use --optimize 3 to enable post-route optimizations. This may improve the bitstream but SIGNIFICANTLY increase compilation time
 XOCCLFLAGS := --kernel_frequency 200 --platform $(PLATFORM) -t $(TARGET)  -s -g
 
 AIE_OBJ := ../aie/libadf.a

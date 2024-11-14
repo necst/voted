@@ -46,9 +46,11 @@ XOCCFLAGS := --platform $(PLATFORM) -t $(TARGET)  -s -g
 
 compile: setup_aie_$(TARGET).xo sink_from_aie_$(TARGET).xo 
 
+# Use --optimize 3 to enable post-route optimizations. This may improve the bitstream but SIGNIFICANTLY increase compilation time
 setup_aie_$(TARGET).xo: ./setup_aie.cpp
 	v++ $(XOCCFLAGS) --kernel setup_aie -c -o $@ $<
 
+# Use --optimize 3 to enable post-route optimizations. This may improve the bitstream but SIGNIFICANTLY increase compilation time
 sink_from_aie_$(TARGET).xo: ./sink_from_aie.cpp
 	v++ $(XOCCFLAGS) --kernel sink_from_aie -c -o $@ $<
 
