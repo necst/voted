@@ -1,120 +1,234 @@
-import configparser
-import os
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-# 1) Read the configuration file
-config = configparser.ConfigParser()
-config.read('kernel.cfg')
+import configparser, os, sys
 
-# 2) Helper: read an option, returning None if missing, blank or 'None'
-def get_opt(section, option):
-    if not config.has_option(section, option):
-        return None
-    val = config.get(section, option).strip()
-    if not val or val.lower() == 'none':
-        return None
-    return val
+# -------------------------
+# 1) Read kernel.cfg
+# -------------------------
+cfg = configparser.ConfigParser()
+cfg.read('kernel.cfg')
 
-# 3) Extract parameters from the [kernel] section
-vector_size   = get_opt('kernel', 'vector_size')   or '4'
-input1_type   = get_opt('kernel', 'input1_type')
-input2_type   = get_opt('kernel', 'input2_type')
-output1_type  = get_opt('kernel', 'output1_type')
-output2_type  = get_opt('kernel', 'output2_type')
-kernel_name   = get_opt('kernel', 'kernel_name')   or 'my_kernel_function'
-header_name   = get_opt('kernel', 'header_name')   or f'{kernel_name}.h'
-cpp_name      = f"{kernel_name}.cpp"
+def get_opt(key, default=None):
+    """
+    Return the value of 'key' in [kernel], stripping comments,
+    or default if missing/blank/'None'.
+    """
+    raw = cfg.get('kernel', key, fallback=None)
+    if raw is None:
+        return default
+    # strip inline comments starting with '#' or ';'
+    val = raw.split('#',1)[0].split(';',1)[0].strip()
+    return val if val else default
 
-# 4) Build lists of streams present
-inputs  = [(1, input1_type), (2, input2_type)]
-outputs = [(1, output1_type), (2, output2_type)]
+# -------------------------
+# 2) General parameters
+# -------------------------
+file_name   = get_opt('file_name', 'my_kernel')
+kernel_name = get_opt('kernel_name', file_name)
+header_name = get_opt('header_name', f'{file_name}.h')
+mode        = get_opt('mode', 'stream').lower()
+if mode not in ('stream', 'window'):
+    print("ERROR: 'mode' must be 'stream' or 'window'", file=sys.stderr)
+    sys.exit(1)
 
-# Filter only those with a valid type
-inputs  = [(n, t) for n, t in inputs  if t]
-outputs = [(n, t) for n, t in outputs if t]
+# ➊ Print all the parameters to the console
+print("=== Kernel generation parameters ===")
+print(f"  file_name   = {file_name}")
+print(f"  kernel_name = {kernel_name}")
+print(f"  header_name = {header_name}")
+print(f"  mode        = {mode}")
+print("  streams:")
+for role in ('input1', 'input2', 'output1', 'output2'):
+    t = get_opt(f'{role}_type')
+    s = get_opt(f'{role}_size')
+    if t and s:
+        print(f"    {role}: type={t}, size={s}")
+print("======================================\n")
 
-# 5) Build function signature parameters
-def make_param_list(streams, io):
-    # io: 'input' or 'output'
-    params = []
-    for n, t in streams:
-        params.append(f"{io}_stream<{t}>* restrict {io}{n}")
-    return params
+# -------------------------
+# 3) Type→bitwidth map
+# -------------------------
+type_bw = {
+    'int8_t': 8,   'uint8_t': 8,
+    'int16_t': 16, 'uint16_t': 16,
+    'int32_t': 32, 'uint32_t': 32,
+    'int64_t': 64, 'uint64_t': 64,
+    'float': 32,   'double': 64
+}
 
-param_list = make_param_list(inputs,  'input')  + make_param_list(outputs, 'output')
-param_str  = ',\n                   '.join(param_list) if param_list else '/* no streams defined */'
+# -------------------------
+# 4) Collect streams
+# -------------------------
+streams = []
+for role in ('input1', 'input2', 'output1', 'output2'):
+    t = get_opt(f'{role}_type')
+    s = get_opt(f'{role}_size')
+    if not (t and s):
+        continue
+    try:
+        vs = int(s)
+    except ValueError:
+        print(f"ERROR: {role}_size must be an integer", file=sys.stderr)
+        sys.exit(1)
+    if t not in type_bw:
+        print(f"ERROR: unknown type '{t}' for {role}", file=sys.stderr)
+        sys.exit(1)
+    if vs * type_bw[t] > 1024:
+        print(f"ERROR: {role}: {vs * type_bw[t]} bits exceeds 1024-bit limit", file=sys.stderr)
+        sys.exit(1)
+    streams.append((role, t, vs))
 
-# 6) Helper: generate include-guard macro from header filename
-base, _ = os.path.splitext(header_name)
-guard_macro = base.upper().replace('.', '_') + '_H'
+inputs  = [s for s in streams if s[0].startswith('input')]
+outputs = [s for s in streams if s[0].startswith('output')]
 
-# 7a) C++ kernel template (.cpp) with English comments
-cpp_template = f'''#include "{header_name}"
-#include "common.h"
-#include "aie_api/aie.hpp"
-#include "aie_api/aie_adf.hpp"
-#include "aie_api/utils.hpp"
+# -------------------------
+# 5) Build function signature
+# -------------------------
+params = []
+for r, t, _ in inputs:
+    if mode == 'stream':
+        params.append(f"input_stream<{t}>* restrict {r}")
+    else:
+        params.append(f"input_window<{t}>* {r}")
+for r, t, _ in outputs:
+    if mode == 'stream':
+        params.append(f"output_stream<{t}>* restrict {r}")
+    else:
+        params.append(f"output_window<{t}>* {r}")
+param_str = ',\n                   '.join(params)
 
-// API REFERENCE for STREAM:
-// https://docs.amd.com/r/en-US/ug1079-ai-engine-kernel-coding/Reading-and-Advancing-an-Input-Stream
+# -------------------------
+# 6) Include guard & filenames
+# -------------------------
+base, _   = os.path.splitext(header_name)
+guard     = base.upper().replace('.', '_') + '_H'
+cpp_name  = f"{file_name}.cpp"
 
-void {kernel_name}(
-                   {param_str}
-)
+# -------------------------
+# 7) Compute-function stub
+# -------------------------
+compute_args = []
+for r, t, vs in inputs:
+    compute_args.append(f"aie::vector<{t},{vs}>& vec_{r}")
+for r, t, vs in outputs:
+    compute_args.append(f"aie::vector<{t},{vs}>& result_{r}")
+compute_sig = f"void compute_function({', '.join(compute_args)})"
+compute_def = f"""{compute_sig}
 {{
-'''
-# 7b) If there's at least one input, use its first vector to get tot_iterations
-if inputs:
-    first_n, first_t = inputs[0]
-    cpp_template += f'''    // Read the first vector from input{first_n} to get the total iteration count
-    aie::vector<{first_t},{vector_size}> header = readincr_v{vector_size}(input{first_n});
-    int tot_iterations = header[0];
+    // to be filled with user logic
+}}
+"""
 
-    // Main processing loop
-    for (int i = 0; i < tot_iterations; i++) {{
-'''
-    # 7c) Inside loop: read one vector from each defined input
-    for n, t in inputs:
-        cpp_template += f"        aie::vector<{t},{vector_size}> vec{n} = readincr_v{vector_size}(input{n});\n"
-    cpp_template += "\n"
-    # 7d) (Optional) example pass-through: set each output vec = corresponding input vec
-    for n, t in outputs:
-        # if there is an input with same index, pass through; else leave FIXME
-        if any(n == in_n for in_n, _ in inputs):
-            cpp_template += f"        aie::vector<{t},{vector_size}> result{n} = vec{n};\n"
-        else:
-            cpp_template += f"        aie::vector<{t},{vector_size}> result{n}; // FIXME: fill result{n}\n"
-    cpp_template += "\n"
-    # 7e) Write each result to its output stream
-    for n, _ in outputs:
-        cpp_template += f"        writeincr(output{n}, result{n});\n"
-    cpp_template += "    }\n"
+# -------------------------
+# 8) Generate .cpp
+# -------------------------
+lines = [
+    f'/* Auto-generated ({mode} mode) */',
+    f'#include "{header_name}"',
+    '#include "common.h"',
+    '#include "aie_api/aie.hpp"',
+    '#include "aie_api/aie_adf.hpp"',
+    '#include "aie_api/utils.hpp"',
+    '',
+    '// user compute stub',
+    compute_def,
+    '',
+    f'void {kernel_name}(',
+    f'                   {param_str}',
+    ')',
+    '{'
+]
+
+if mode == 'stream':
+    if inputs:
+        r0, t0, vs0 = inputs[0]
+        lines += [
+            '    // read header for iteration count',
+            f'    aie::vector<{t0},{vs0}> header = readincr_v<{vs0}>({r0});',
+            '    int tot_iterations = header[0];',
+            '',
+            '    for (int i = 0; i < tot_iterations; i++) {'
+        ]
+    for r, t, vs in inputs:
+        lines.append(f'        aie::vector<{t},{vs}> vec_{r} = readincr_v<{vs}>({r});')
+    for r, t, vs in outputs:
+        lines.append(f'        aie::vector<{t},{vs}> result_{r};')
+    vecs = [f"vec_{r}" for r, _, _ in inputs]
+    ress = [f"result_{r}" for r, _, _ in outputs]
+    lines += [
+        '',
+        f'        compute_function({", ".join(vecs + ress)});',
+        ''
+    ]
+    for r, _, _ in outputs:
+        lines.append(f'        writeincr({r}, result_{r});')
+    lines.append('    }')
+
 else:
-    cpp_template += "    // No input streams defined: nothing to do\n"
+    if inputs:
+        r0, t0, vs0 = inputs[0]
+        lines += [
+            '    // read header for iteration count',
+            f'    window_acquire({r0});',
+            f'    aie::vector<{t0},{vs0}> header = window_readincr_v{vs0}({r0});',
+            f'    window_release({r0});',
+            '    int tot_iterations = header[0];',
+            '',
+            '    for (int i = 0; i < tot_iterations; i++) {'
+        ]
+    for r, t, vs in inputs:
+        lines += [
+            f'        window_acquire({r});',
+            f'        aie::vector<{t},{vs}> vec_{r} = window_readincr_v{vs}({r});',
+            f'        window_release({r});'
+        ]
+    for r, t, vs in outputs:
+        lines.append(f'        aie::vector<{t},{vs}> result_{r};')
+    vecs = [f"vec_{r}" for r, _, _ in inputs]
+    ress = [f"result_{r}" for r, _, _ in outputs]
+    lines += [
+        '',
+        f'        compute_function({", ".join(vecs + ress)});',
+        ''
+    ]
+    for r, _, _ in outputs:
+        lines += [
+            f'        window_acquire({r});',
+            f'        window_writeincr({r}, result_{r});',
+            f'        window_release({r});'
+        ]
+    lines.append('    }')
 
-cpp_template += "}\n"
+lines.append('}')
 
-# 7f) Header template (.h) with include guard and prototype
-header_template = f'''#ifndef {guard_macro}
-#define {guard_macro}
+cpp_content = '\n'.join(lines)
 
-#include "common.h"
-#include "aie_api/aie.hpp"
-#include "aie_api/aie_adf.hpp"
-#include "aie_api/utils.hpp"
+# -------------------------
+# 9) Generate .h
+# -------------------------
+hdr = [
+    f'#ifndef {guard}',
+    f'#define {guard}',
+    '',
+    '#include "common.h"',
+    '#include "aie_api/aie.hpp"',
+    '#include "aie_api/aie_adf.hpp"',
+    '#include "aie_api/utils.hpp"',
+    '',
+    '// user compute prototype',
+    compute_sig + ';',
+    '',
+    f'// kernel prototype ({mode} mode)',
+    f'void {kernel_name}(',
+    f'                   {param_str}',
+    ');',
+    '',
+    f'#endif // {guard}'
+]
+hdr_content = '\n'.join(hdr)
 
-// Function prototype for {kernel_name}
-void {kernel_name}(
-                   {param_str}
-);
+with open(cpp_name,    'w') as f: f.write(cpp_content)
+with open(header_name, 'w') as f: f.write(hdr_content)
 
-#endif // {guard_macro}
-'''
-
-# 8) Write the generated files
-with open(cpp_name, 'w') as f_cpp:
-    f_cpp.write(cpp_template)
-
-with open(header_name, 'w') as f_hdr:
-    f_hdr.write(header_template)
-
-print(f"Generated files:\n - {cpp_name}\n - {header_name}")
+print(f"Generated ({mode} mode):\n - {cpp_name}\n - {header_name}")
