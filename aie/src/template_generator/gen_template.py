@@ -164,7 +164,6 @@ if mode == 'stream':
     for r, _, _ in outputs:
         lines.append(f'        writeincr({r}, result_{r});')
     lines.append('    }')
-
 else:
     if inputs:
         r0, t0, vs0 = inputs[0]
@@ -228,7 +227,17 @@ hdr = [
 ]
 hdr_content = '\n'.join(hdr)
 
-with open(cpp_name,    'w') as f: f.write(cpp_content)
-with open(header_name, 'w') as f: f.write(hdr_content)
+# -------------------------
+# 10) Write out (to parent dir)
+# -------------------------
+out_cpp    = os.path.join('..', cpp_name)
+out_header = os.path.join('..', header_name)
 
-print(f"Generated ({mode} mode):\n - {cpp_name}\n - {header_name}")
+# ensure target directory exists
+parent = os.path.dirname(out_cpp) or '..'
+os.makedirs(parent, exist_ok=True)
+
+with open(out_cpp,    'w') as f: f.write(cpp_content)
+with open(out_header, 'w') as f: f.write(hdr_content)
+
+print(f"Generated ({mode} mode):\n - {out_cpp}\n - {out_header}")
