@@ -55,8 +55,30 @@ _./setup_emu.sh -s on --shell =< qdma|xdma >_ : enables the hardware emulation
 
 i.e.: make build_sw && ./setup_emu.sh && ./host_overlay.exe : this will compile, prepare the emulation, and run it.
 
-
 ## General useful commands:
 If you need to move your bitstream and executable on the target machine, you may want it prepared in a single folder that contains all the required stuff to be moved. In this case, you can use the
 
 _make build_and_pack TARGET=hw/hw_emu SHELL_NAME=< qdma|xdma >_ :  it allows you to pack our build in a single folder. Notice that the hw_emu does not have to be moved on the device, it must be executed on the development machine.
+
+
+**Related Pubblications**
+
+Sorrentino, G., Galfano, P. S., D'Arnese, E., & Conficconi, D. (2025). Soaring with TRILLI: an HW/SW Heterogeneous Accelerator for Multi-Modal Image Registration. In Proceedings of the 2025 IEEE 33rd Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM). IEEE. https://doi.org/10.5281/zenodo.15211289
+
+Cabai, E., Sorrentino, G., Conficconi, D., & Santambrogio, M. D. (2025). A Hardware/Software Co-Design Approach for Versal-Based K-means Acceleration [Poster]. In Proceedings of the 2024 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). IEEE.
+
+Mansutti, F., Ettori, D., Sorrentino, G., Santambrogio, M. D., & Conficconi, D. (2025). Towards a Methodology to Leverage Alveo Versal System Usability And Parallelization [Poster]. In Proceedings of the 39th I Reconfigurable Architectures Workshop (RAW 2025).
+
+P. S. Galfano, G. Sorrentino, E. D'Arnese and D. Conficconi, "Co-Designing a 3D Transformation Accelerator for Versal-Based Image Registration," 2024 IEEE 42nd International Conference on Computer Design (ICCD), Milan, Italy, 2024, pp. 219-222, doi: 10.1109/ICCD63220.2024.00041.
+
+## Citation
+```
+@inproceedings{sorrentino2025voted,
+  author    = {Giuseppe Sorrentino and Paolo S. Galfano and Eleonora D'Arnese and Davide Conficconi},
+  title     = {VOTED: Versal Optimization Toolkit for Education and Heterogeneous Systems Development},
+  booktitle = {Proceedings of the IEEE International Symposium on Circuits and Systems (ISCAS)},
+  year      = {2025},
+  pages     = {1--5},
+  publisher = {IEEE}
+}
+```
