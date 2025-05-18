@@ -31,7 +31,6 @@ furnished to do so, subject to the following conditions:
 #define arg_sink_from_aie_output 1
 #define arg_sink_from_aie_size   2
 
-bool get_xclbin_path(std::string& xclbin_file);
 std::ostream& bold_on(std::ostream& os);
 std::ostream& bold_off(std::ostream& os);
 
@@ -55,8 +54,12 @@ int main(int argc, char* argv[]) {
     }
     std::string xclbin_file = argv[1];
 
-    if (argc >= 3 && std::string(argv[2]) == "--hw_emu") {
-        std::cout << "Program running in hardware emulation mode" << std::endl;
+    char *env_emu = getenv("XCL_EMULATION_MODE");
+    if (env_emu && std::string(env_emu) == "hw_emu") {
+        std::cout << bold_on << "Program running in hardware emulation mode" << bold_off << std::endl;
+    }
+    else {
+        std::cout << bold_on << "Program running in hardware mode" << bold_off << std::endl;
     }
 
     // ------------------------------------------------LOADING XCLBIN------------------------------------------    
@@ -101,18 +104,6 @@ int main(int argc, char* argv[]) {
     buf_out.read(output_buffer);
 
     return checkResult(nums, output_buffer, size);
-}
-
-bool get_xclbin_path(std::string& xclbin_file) {
-    char *env_emu = getenv("XCL_EMULATION_MODE");
-    if (env_emu && std::string(env_emu) == "hw_emu") {
-        xclbin_file = "overlay_hw_emu.xclbin";
-    }
-    else {
-        std::cout << bold_on << "Program running in hardware mode" << bold_off << std::endl;
-        xclbin_file = "overlay_hw.xclbin";
-    }
-    return true;
 }
 
 std::ostream& bold_on(std::ostream& os)  { return os << "\e[1m"; }

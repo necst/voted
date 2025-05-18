@@ -70,7 +70,6 @@ For execution:
 
 this will compile, prepare the emulation, and run it.
 
-_Note_: By default, VOTED creates a symbolic link from _linking_ to _sw_ folder. This simbolic link poits at overlay_hw.xclbin or overlay_hw_emu.xclbin. If no input is given as XCLBIN_PATH, the host code automatically looks for this simbolic link in the sw folder. 
 
 ## General useful commands:
 If you need to move your bitstream and executable on the target machine, you may want it prepared in a single folder that contains all the required stuff to be moved. In this case, you can use the
