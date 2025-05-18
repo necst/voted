@@ -51,9 +51,11 @@ XCLBIN  := overlay_$(TARGET).xclbin
 
 all: $(XCLBIN)
 
+# The XSA_OBJ dependency is not required, if the target platform is a non Versal alveo accelerator card.
 $(XCLBIN): $(XSA_OBJ) $(AIE_OBJ)
 	v++ -p -t $(TARGET) -f $(PLATFORM) $^ -o $@ --package.boot_mode=ospi
 
+# This command is not required, if the target platform is a non Versal alveo accelerator card.
 $(XSA_OBJ): $(XOS) $(AIE_OBJ)
 	v++ -l $(XOCCFLAGS) $(XOCCLFLAGS) --config xclbin_overlay.cfg -o $@ $^
 

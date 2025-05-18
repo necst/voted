@@ -1,9 +1,18 @@
-# VOTED: Versal-Optimization-Toolkit-for-Education-ed-Heterogeneous-System-Development - FPGA101 Course
-
+# VOTED: Versal-Optimization-Toolkit-for-Education-ed-Heterogeneous-System-Development
 ## Info & Description
-This repository contains the main infrastructure for an AIE-PL project, providing simple automation for testing your code.
-Nothing here is provided as "the best way to do". Surely there are other solutions, maybe there are better ones. But still,
-this is a useful starting point.
+This repository contains code and automation for VOTED, a toolkit for education, development and optimization of Versal systems. 
+Voted idea is to follow a bottom-up approach to develop from low level kernels up to the system integration. 
+
+<img src="images/votedflow.svg" alt="VOTED’s modular structure. Users start from I and II . VOTED provides comprehensive evaluation strategies to
+every single component correctness even integrated with the output of other components. Then, the system-level module III
+instantiates and links the devised components, allowing experts to guide the resource allocation strategy. Finally, VOTED offers
+a ready-to-use host structure IV , to perform hardware emulation or to target the accelerator card for deploying.">
+
+_VOTED’s modular structure. Users start from I and II . VOTED provides comprehensive evaluation strategies to
+every single component correctness even integrated with the output of other components. Then, the system-level module III
+instantiates and links the devised components, allowing experts to guide the resource allocation strategy. Finally, VOTED offers
+a ready-to-use host structure IV , to perform hardware emulation or to target the accelerator card for deploying._
+
 
 ## Main Structure
 
@@ -53,13 +62,35 @@ _make build_sw_ : it compiles the sw
 
 _./setup_emu.sh -s on --shell =< qdma|xdma >_ : enables the hardware emulation
 
-i.e.: make build_sw && ./setup_emu.sh && ./host_overlay.exe : this will compile, prepare the emulation, and run it.
+For execution: 
+
+```
+./host_overlay.exe : `<XCLBIN_PATH>` 
+```
+
+this will compile, prepare the emulation, and run it.
+
+_Note_: By default, VOTED creates a symbolic link from _linking_ to _sw_ folder. This simbolic link poits at overlay_hw.xclbin or overlay_hw_emu.xclbin. If no input is given as XCLBIN_PATH, the host code automatically looks for this simbolic link in the sw folder. 
 
 ## General useful commands:
 If you need to move your bitstream and executable on the target machine, you may want it prepared in a single folder that contains all the required stuff to be moved. In this case, you can use the
 
 _make build_and_pack TARGET=hw/hw_emu SHELL_NAME=< qdma|xdma >_ :  it allows you to pack our build in a single folder. Notice that the hw_emu does not have to be moved on the device, it must be executed on the development machine.
 
+## Additional Desired Features:
+
+### Target Non Versal Accelerator Cards
+In principle, VOTED is not meant for Versal systems only, as it can target also FPGA HPC accelerators, by applying few modifications to the basecode. 
+
+Suggested steps: 
+1. Modify _linking/Makefile_ as described in comments, thus removing the XSA_OBJ dependency
+2. Add your custom HLS kernels in _./fpga/_ and add the needed makefiles rule to compile. 
+3. Edit the _linking/xclbin_overlay.cfg_ to remove the AI Engine dependency
+
+Checkout VOTED forks on 3D Mutual Information Accelerator targeting U55C accelerator cards with HBM :D 
+
+### AI Engine Template Generation
+This is still an under development feature, it can be found in aie_template_generator branch
 
 **Related Pubblications**
 
