@@ -95,7 +95,7 @@ This is still an under development feature, it can be found in aie_template_gene
 
 - Sorrentino, G., Galfano, P. S., D'Arnese, E., & Conficconi, D. (2025). Soaring with TRILLI: an HW/SW Heterogeneous Accelerator for Multi-Modal Image Registration. In Proceedings of the 2025 IEEE 33rd Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM). IEEE. https://doi.org/10.5281/zenodo.15211289
 
-- Cabai, E., Sorrentino, G., Conficconi, D., & Santambrogio, M. D. (2025). A Hardware/Software Co-Design Approach for Versal-Based K-means Acceleration [Poster]. In Proceedings of the 2024 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). IEEE.
+- Cabai, E., Sorrentino, G., & Santambrogio, M. D., Conficconi, D.(2025). A Hardware/Software Co-Design Approach for Versal-Based K-means Acceleration [Poster]. In Proceedings of the 2024 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). IEEE.
 
 - Mansutti, F., Ettori, D., Sorrentino, G., Santambrogio, M. D., & Conficconi, D. (2025). Towards a Methodology to Leverage Alveo Versal System Usability And Parallelization [Poster]. In Proceedings of the 39th I Reconfigurable Architectures Workshop (RAW 2025).
 
