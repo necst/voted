@@ -5,7 +5,7 @@ Copyright (c) 2023 Paolo Salvatore Galfano, Giuseppe Sorrentino
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
+in the Software without restriction, including without limitation the rights,
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include "sink_from_aie.hpp"
 #include <ap_int.h>
-#include <hls_stream.h>
 #include <hls_math.h>
 #include <ap_axi_sdata.h>
 #include "../common/common.h"
@@ -54,4 +54,4 @@ void sink_from_aie(
         output[i] = x;
     }
 }
-}
+} // extern "C"

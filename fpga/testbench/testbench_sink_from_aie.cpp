@@ -26,7 +26,7 @@ SOFTWARE.
 #include <sys/stat.h>
 #include <fstream>
 #include <ap_axi_sdata.h>
-#include "../sink_from_aie.cpp"
+#include "../sink_from_aie.hpp"
 #include <cmath>
 
 
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     std::ifstream file;
     file.open("../../aie/x86simulator_output/data/out_plio_sink_1.txt");
     if (!file) {
-        std::cerr << "Unable to open file ../../aie/x86simulator_output/out_plio_sink.txt";
+        std::cerr << "Unable to open file ../../aie/x86simulator_output/out_plio_sink.txt - as this file is source data, adjust your files in the build directory" << std::endl;
         return 1;
     }
 
