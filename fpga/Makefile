@@ -71,34 +71,7 @@ run_testbench_setupaie: testbench_setupaie
 # Usage: make full_test_hls src=your_file.cpp tb=your_testbench.cpp
 # Both files must exist, and the testbench should be located in the 'testbench/' directory
 
-old_full_test_hls:
-	@echo "Running full_test_hls with source: $(src) and testbench: $(tb)"
-	@if [ -z "$(src)" ] || [ -z "$(tb)" ]; then \
-		echo "Error: Please specify both source and testbench using 'make full_test_hls src=filename.cpp tb=testbench.cpp'"; \
-		exit 1; \
-	fi
-	@PROJ_ROOT=full_test_$(shell date +%Y%m%d_%H%M%S) && \
-	BUILD_DIR=$$PROJ_ROOT/build && \
-	TESTBENCH_DIR=$$BUILD_DIR/testbench && \
-	SRC_BASE=$(basename $(src) .cpp) && \
-	echo "Creating project structure in $$PROJ_ROOT" && \
-	mkdir -p $$TESTBENCH_DIR && \
-	mkdir -p $$PROJ_ROOT/common && \
-	cp $(src) $$BUILD_DIR/$(notdir $(src)) && \
-	cp $$SRC_BASE.hpp $$BUILD_DIR/ && \
-	cp testbench/$(tb) $$TESTBENCH_DIR/$(notdir $(tb)) && \
-	cp -r ../common/* $$PROJ_ROOT/common/ && \
-	echo "open_project mutual_info_project" > $$BUILD_DIR/script.tcl && \
-	echo "set_top $$SRC_BASE" >> $$BUILD_DIR/script.tcl && \
-	echo "add_files $(notdir $(src))" >> $$BUILD_DIR/script.tcl && \
-	echo "add_files -tb testbench/$(notdir $(tb))" >> $$BUILD_DIR/script.tcl && \
-	echo "open_solution solution1" >> $$BUILD_DIR/script.tcl && \
-	echo "set_part {xcvc1902-vsva2197-2MP-e-S}" >> $$BUILD_DIR/script.tcl && \
-	echo "create_clock -period 4 -name default" >> $$BUILD_DIR/script.tcl && \
-	echo "csim_design" >> $$BUILD_DIR/script.tcl && \
-	echo "csynth_design" >> $$BUILD_DIR/script.tcl && \
-	echo "cosim_design" >> $$BUILD_DIR/script.tcl && \
-	cd $$BUILD_DIR && vitis_hls -f script.tcl
+# Removed the old_full_test_hls target as it is no longer needed.
 
 SRC_BASE := $(basename $(notdir $(src)) .cpp)
 SRC_FILE := $(notdir $(src))
