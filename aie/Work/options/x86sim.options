@@ -1,0 +1,26 @@
+# For setting input directory path : define input-dir
+input-dir=.
+# For setting output directory path : define output-dir
+output-dir=./x86simulator_output
+# For Timeout : define timeout as integer value
+timeout=no
+# For Snapshots : define dump=yes
+dump=no
+# For Gdb debugging : define gdb=yes
+gdb=no
+# For running Valgrind : define valgrind=yes
+valgrind=no
+# For running Valgrind and debugging via Gdb server : define valgrind-gdb=yes
+valgrind-gdb=no
+# For overriding default options to valgrind : define --valgrind-args with options
+valgrind-args=no
+# For Stopping on deadlock : define disable-stop-on-deadlock=yes
+disable-stop-on-deadlock=no
+# For Trace : define trace=yes
+trace=no
+# For Trace print : define trace-print=yes
+trace-print=no
+# For Enabling handshake protocol with external testbench : define enable-handshake-ext-tb=yes
+enable-handshake-ext-tb=no
+# For generating valid x86sim.aierun_summary in SW_EMU flow: define pkg-dir=<absolute path to work directory>
+pkg-dir=/home/users/giuseppe.sorrentino/tmp_voted/voted/aie/./Work

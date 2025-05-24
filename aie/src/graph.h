@@ -47,7 +47,7 @@ public:
 	my_graph()
 	{
 		// ------kernel creation------
-		my_kernel_1 = kernel::create(my_kernel_function); // the input is the kernel function name
+		my_kernel_1 = kernel::create(my_top_function); // the input is the kernel function name
 
 		// ------Input and Output PLIO creation------
 		// I argument: a name, that will be used to refer to the port in the block design
