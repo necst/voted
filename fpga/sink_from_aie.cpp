@@ -54,4 +54,5 @@ void sink_from_aie(
         output[i] = x;
     }
 }
-} // extern "C"
+}
+// extern "C"
