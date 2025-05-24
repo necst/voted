@@ -37,3 +37,5 @@ fpga/*.csv
 fpga/*.log
 fpga/*.jou
 fpga/*.str
+fpga/*.log
+fpga/full_test_[0-9]*

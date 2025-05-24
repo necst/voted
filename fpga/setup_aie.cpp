@@ -23,11 +23,8 @@ SOFTWARE.
 */
 
 
-#include <ap_int.h>
-#include <hls_stream.h>
-#include <hls_math.h>
-#include <ap_axi_sdata.h>
-#include "../common/common.h"
+#include "setup_aie.hpp"
+
 
 
 extern "C" {
