@@ -27,7 +27,7 @@ SOFTWARE.
 #include <fstream>
 #include <ap_axi_sdata.h>
 #include <cmath>
-#include "../setup_aie.cpp"
+#include "../setup_aie.hpp"
 #include <iostream>
 
 void read_from_stream(float *buffer, hls::stream<float> &stream, size_t size) {
@@ -73,7 +73,15 @@ int main(int argc, char* argv[]) {
             }
         }
     } else {
-        std::cout << "Error opening file" << std::endl;
+        std::cout << "Error opening file - Ignore this error if you are in Full_HLS_MODE - Here is the kernel output" << std::endl;
+        ap_int<sizeof(int) * 8 * 4> tmp;
+            for (unsigned int i = 0; i < (size/4)+1; i++) {
+                tmp = s.read();
+                for (unsigned int j = 0; j < 4; j++) {
+                    float val = tmp.range(31 + j * 32, j * 32);
+                    std::cout<<val<<std::endl;
+                }
+            }
     }
 
     // In a different, complete, test, here you may even run the AIE and then continue your test. But for this
