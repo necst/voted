@@ -8,7 +8,7 @@
 // user compute stub
 void compute_function(aie::vector<int32_t,4>& vec_input2, aie::vector<int32_t,4>& result_output2)
 {
-    result_output2 = aie::add(vec_input2,0);
+    // to be filled with user logic
 }
 
 
