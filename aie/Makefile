@@ -44,7 +44,7 @@ libadf.a: src/*
 	@echo "INFO:Running aiecompiler for hw..."
 	@rm -rf Work libadf.a
 	@mkdir -p Work
-	@aiecompiler --target=hw --platform=$(PLATFORM) --include="src" --include="../common" --workdir=./Work --heapsize=2048 --stacksize=4096 --xlopt=2 -v src/graph.cpp
+	@aiecompiler --target=hw --platform=$(PLATFORM) --include="src" --include="../common" --workdir=./Work --heapsize=2048 --stacksize=4096 --xlopt=0 -v src/graph.cpp
 	
 aie_compile_x86: 
 	@echo "INFO:- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"

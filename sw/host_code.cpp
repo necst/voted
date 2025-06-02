@@ -1,18 +1,3 @@
-/*
-MIT License
-
-Copyright (c) 2023 Paolo Salvatore Galfano, Giuseppe Sorrentino
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-[...]
-*/
-
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -22,8 +7,6 @@ furnished to do so, subject to the following conditions:
 #include "experimental/xrt_kernel.h"
 #include "experimental/xrt_uuid.h"
 #include "../common/common.h"
-
-#define DEVICE_ID 0
 
 // args indexes per kernel
 #define arg_setup_aie_size    0
@@ -49,10 +32,16 @@ int checkResult(int32_t* input, int32_t* output, int size) {
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <XCLBIN_PATH> [--hw_emu]" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <XCLBIN_PATH> [--hw_emu] [DEVICE_ID]" << std::endl;
         return EXIT_FAILURE;
     }
+
     std::string xclbin_file = argv[1];
+
+    int device_id = 0;
+    if (argc >= 4) {
+        device_id = std::stoi(argv[3]);
+    }
 
     char *env_emu = getenv("XCL_EMULATION_MODE");
     if (env_emu && std::string(env_emu) == "hw_emu") {
@@ -62,12 +51,11 @@ int main(int argc, char* argv[]) {
         std::cout << bold_on << "Program running in hardware mode" << bold_off << std::endl;
     }
 
-    // ------------------------------------------------LOADING XCLBIN------------------------------------------    
-    std::cout << "1. Loading bitstream (" << xclbin_file << ")... ";
-    xrt::device device = xrt::device(DEVICE_ID);
+    std::cout << "1. Loading bitstream (" << xclbin_file << ") on device " << device_id << "... ";
+    xrt::device device = xrt::device(device_id);
     xrt::uuid xclbin_uuid = device.load_xclbin(xclbin_file);
     std::cout << "Done" << std::endl;
-    // ---------------------------------------INITIALIZING THE BOARD------------------------------------------
+
     xrt::kernel krnl_setup_aie     = xrt::kernel(device, xclbin_uuid, "setup_aie");
     xrt::kernel krnl_sink_from_aie = xrt::kernel(device, xclbin_uuid, "sink_from_aie");
 
