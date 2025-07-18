@@ -103,12 +103,13 @@ This is still an under development feature, it can be found in aie_template_gene
 
 ## Citation
 ```
-@inproceedings{sorrentino2025voted,
-  author    = {Giuseppe Sorrentino and Paolo S. Galfano and Eleonora D'Arnese and Davide Conficconi},
-  title     = {VOTED: Versal Optimization Toolkit for Education and Heterogeneous Systems Development},
-  booktitle = {Proceedings of the IEEE International Symposium on Circuits and Systems (ISCAS)},
-  year      = {2025},
-  pages     = {1--5},
-  publisher = {IEEE}
-}
+@INPROCEEDINGS{sorrentino2025voted,
+  author={Sorrentino, Giuseppe and Galfano, Paolo S. and D’Arnese, Eleonora and Conficconi, Davide},
+  booktitle={2025 IEEE International Symposium on Circuits and Systems (ISCAS)}, 
+  title={VOTED – Versal Optimization Toolkit for Education and Heterogeneous Systems Development}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-5},
+  doi={10.1109/ISCAS56072.2025.11043842}}
 ```
