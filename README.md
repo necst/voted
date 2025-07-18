@@ -1,4 +1,5 @@
-# VOTED: Versal-Optimization-Toolkit-for-Education-ed-Heterogeneous-System-Development
+# VOTED: Versal-Optimization-Toolkit-for-Education-ed-Heterogeneous-System-Development [![IEEE Paper](https://img.shields.io/badge/IEEE-Paper-blue)](https://ieeexplore.ieee.org/document/11043842)
+
 ## 🎯 Info & Description
 This repository contains code and automation for VOTED, a toolkit for education, development and optimization of Versal systems. 
 Voted idea is to follow a bottom-up approach to develop from low level kernels up to the system integration. 
