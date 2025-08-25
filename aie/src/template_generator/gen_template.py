@@ -17,7 +17,6 @@ def get_opt(key, default=None):
     raw = cfg.get('kernel', key, fallback=None)
     if raw is None:
         return default
-    # strip inline comments starting with '#' or ';'
     val = raw.split('#',1)[0].split(';',1)[0].strip()
     return val if val else default
 
@@ -31,13 +30,18 @@ mode        = get_opt('mode', 'stream').lower()
 if mode not in ('stream', 'window'):
     print("ERROR: 'mode' must be 'stream' or 'window'", file=sys.stderr)
     sys.exit(1)
+if mode == 'window':
+    conn = get_opt('communication', 'sync')  # sync/async
 
-# ➊ Print all the parameters to the console
+# -------------------------
+# 3) Print parameters
+# -------------------------
 print("=== Kernel generation parameters ===")
 print(f"  file_name   = {file_name}")
 print(f"  kernel_name = {kernel_name}")
 print(f"  header_name = {header_name}")
 print(f"  mode        = {mode}")
+print(f"  communication = {conn if mode=='window' else 'N/A'}")
 print("  streams:")
 for role in ('input1', 'input2', 'output1', 'output2'):
     t = get_opt(f'{role}_type')
@@ -47,7 +51,7 @@ for role in ('input1', 'input2', 'output1', 'output2'):
 print("======================================\n")
 
 # -------------------------
-# 3) Type→bitwidth map
+# 4) Type → bitwidth map
 # -------------------------
 type_bw = {
     'int8_t': 8,   'uint8_t': 8,
@@ -58,7 +62,7 @@ type_bw = {
 }
 
 # -------------------------
-# 4) Collect streams
+# 5) Collect streams
 # -------------------------
 streams = []
 for role in ('input1', 'input2', 'output1', 'output2'):
@@ -83,30 +87,39 @@ inputs  = [s for s in streams if s[0].startswith('input')]
 outputs = [s for s in streams if s[0].startswith('output')]
 
 # -------------------------
-# 5) Build function signature
+# 6) Build function signature
 # -------------------------
+# window type mapping
+window_type_map = {
+    'int8_t': 'int8', 'int16_t': 'int16', 'int32_t': 'int32', 'int64_t': 'int64',
+    'uint8_t': 'uint8', 'uint16_t': 'uint16', 'uint32_t': 'uint32', 'uint64_t': 'uint64',
+    'float': 'float', 'double': 'float'
+}
+
 params = []
 for r, t, _ in inputs:
     if mode == 'stream':
         params.append(f"input_stream<{t}>* restrict {r}")
     else:
-        params.append(f"input_window<{t}>* {r}")
+        wtype = window_type_map[t]
+        params.append(f"input_window_{wtype}* {r}")
 for r, t, _ in outputs:
     if mode == 'stream':
         params.append(f"output_stream<{t}>* restrict {r}")
     else:
-        params.append(f"output_window<{t}>* {r}")
+        wtype = window_type_map[t]
+        params.append(f"output_window_{wtype}* {r}")
 param_str = ',\n                   '.join(params)
 
 # -------------------------
-# 6) Include guard & filenames
+# 7) Include guard & filenames
 # -------------------------
 base, _   = os.path.splitext(header_name)
 guard     = base.upper().replace('.', '_') + '_H'
 cpp_name  = f"{file_name}.cpp"
 
 # -------------------------
-# 7) Compute-function stub
+# 8) Compute-function stub
 # -------------------------
 compute_args = []
 for r, t, vs in inputs:
@@ -121,7 +134,7 @@ compute_def = f"""{compute_sig}
 """
 
 # -------------------------
-# 8) Generate .cpp
+# 9) Generate .cpp
 # -------------------------
 lines = [
     f'/* Auto-generated ({mode} mode) */',
@@ -165,46 +178,74 @@ if mode == 'stream':
         lines.append(f'        writeincr({r}, result_{r});')
     lines.append('    }')
 else:
-    if inputs:
-        r0, t0, vs0 = inputs[0]
+    # window mode
+    if conn == 'sync':
+        for i, (r, t, vs) in enumerate(inputs):
+            wtype = window_type_map[t]
+            if i == 0:
+                lines += [
+                    '    // read header for iteration count',
+                    f'    aie::vector<{t},{vs}> header = window_readincr_v{vs}({r});',
+                    '    int tot_iterations = header[0];',
+                    '',
+                    '    for (int i = 0; i < tot_iterations; i++) {'
+                ]
+            lines.append(f'        aie::vector<{t},{vs}> vec_{r} = window_readincr_v{vs}({r});')
+        for r, t, vs in outputs:
+            lines.append(f'        aie::vector<{t},{vs}> result_{r};')
+        vecs = [f"vec_{r}" for r, _, _ in inputs]
+        ress = [f"result_{r}" for r, _, _ in outputs]
         lines += [
-            '    // read header for iteration count',
-            f'    window_acquire({r0});',
-            f'    aie::vector<{t0},{vs0}> header = window_readincr_v{vs0}({r0});',
-            f'    window_release({r0});',
-            '    int tot_iterations = header[0];',
             '',
-            '    for (int i = 0; i < tot_iterations; i++) {'
+            f'        compute_function({", ".join(vecs + ress)});',
+            ''
         ]
-    for r, t, vs in inputs:
+        for r, t, vs in outputs:
+            lines.append(f'        window_writeincr({r}, result_{r});')
+        lines.append('    }')
+    else:
+        for i, (r, t, vs) in enumerate(inputs):
+            wtype = window_type_map[t]  # tipo corretto per la window
+            if i == 0:
+                lines += [
+                    '    // read header for iteration count',
+                    f'    window_acquire({r});',
+                    f'    aie::vector<{t},{vs}> header = window_readincr_v{vs}({r});',
+                    f'    window_release({r});',
+                    '    int tot_iterations = header[0];',
+                    '',
+                    '    for (int i = 0; i < tot_iterations; i++) {'
+                ]
+            lines += [
+                f'        window_acquire({r});',
+                f'        aie::vector<{t},{vs}> vec_{r} = window_readincr_v{vs}({r});',
+                f'        window_release({r});'
+            ]
+
+        for r, t, vs in outputs:
+            lines += [
+                f'        aie::vector<{t},{vs}> result_{r};',
+                f'        window_acquire({r});',
+                f'        window_writeincr({r}, result_{r});',
+                f'        window_release({r});'
+            ]
+
+        vecs = [f"vec_{r}" for r, _, _ in inputs]
+        ress = [f"result_{r}" for r, _, _ in outputs]
         lines += [
-            f'        window_acquire({r});',
-            f'        aie::vector<{t},{vs}> vec_{r} = window_readincr_v{vs}({r});',
-            f'        window_release({r});'
+            '',
+            f'        compute_function({", ".join(vecs + ress)});',
+            ''
         ]
-    for r, t, vs in outputs:
-        lines.append(f'        aie::vector<{t},{vs}> result_{r};')
-    vecs = [f"vec_{r}" for r, _, _ in inputs]
-    ress = [f"result_{r}" for r, _, _ in outputs]
-    lines += [
-        '',
-        f'        compute_function({", ".join(vecs + ress)});',
-        ''
-    ]
-    for r, _, _ in outputs:
-        lines += [
-            f'        window_acquire({r});',
-            f'        window_writeincr({r}, result_{r});',
-            f'        window_release({r});'
-        ]
-    lines.append('    }')
+
+        lines.append('    }')
 
 lines.append('}')
 
 cpp_content = '\n'.join(lines)
 
 # -------------------------
-# 9) Generate .h
+# 10) Generate .h
 # -------------------------
 hdr = [
     f'#ifndef {guard}',
@@ -214,6 +255,7 @@ hdr = [
     '#include "aie_api/aie.hpp"',
     '#include "aie_api/aie_adf.hpp"',
     '#include "aie_api/utils.hpp"',
+    '#include <adf.h>',   # aggiunto
     '',
     '// user compute prototype',
     compute_sig + ';',
@@ -225,19 +267,18 @@ hdr = [
     '',
     f'#endif // {guard}'
 ]
+
 hdr_content = '\n'.join(hdr)
 
 # -------------------------
-# 10) Write out (to parent dir)
+# 11) Write output
 # -------------------------
 out_cpp    = os.path.join('..', cpp_name)
 out_header = os.path.join('..', header_name)
 
-# ensure target directory exists
-parent = os.path.dirname(out_cpp) or '..'
-os.makedirs(parent, exist_ok=True)
+os.makedirs(os.path.dirname(out_cpp) or '..', exist_ok=True)
 
-with open(out_cpp,    'w') as f: f.write(cpp_content)
+with open(out_cpp, 'w') as f: f.write(cpp_content)
 with open(out_header, 'w') as f: f.write(hdr_content)
 
 print(f"Generated ({mode} mode):\n - {out_cpp}\n - {out_header}")

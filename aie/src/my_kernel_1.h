@@ -5,6 +5,7 @@
 #include "aie_api/aie.hpp"
 #include "aie_api/aie_adf.hpp"
 #include "aie_api/utils.hpp"
+#include <adf.h>
 
 // user compute prototype
 void compute_function(aie::vector<int32_t,4>& vec_input2, aie::vector<int32_t,4>& result_output2);
