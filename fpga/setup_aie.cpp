@@ -22,37 +22,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
 #include "setup_aie.hpp"
-
-
 
 extern "C" {
 
-void setup_aie(int32_t size, int32_t* input, hls::stream<ap_int<sizeof(int32_t) * 8 * 4>>& s) {
+void setup_aie(int32_t size, int32_t *input,
+               hls::stream<ap_int<sizeof(int32_t) * 8 * 4>> &s) {
 
-	#pragma HLS interface m_axi port=input depth=100 offset=slave bundle=gmem0
-	#pragma HLS interface axis port=s
-	#pragma HLS interface s_axilite port=input bundle=control
-	#pragma HLS interface s_axilite port=size bundle=control
-	#pragma HLS interface s_axilite port=return bundle=control
+#pragma HLS interface m_axi port = input depth = 100 offset = slave bundle =   \
+    gmem0
+#pragma HLS interface axis port = s
+#pragma HLS interface s_axilite port = input bundle = control
+#pragma HLS interface s_axilite port = size bundle = control
+#pragma HLS interface s_axilite port = return bundle = control
 
-	// size represents the number of elements. But the AI Engine uses the number of loops, and each
-	// loop uses 4 elements. So we need to convert the number of elements to the number of loops.
-	int32_t size_loop = size/4;
-	ap_int<sizeof(int32_t)*8*4> tmp;
-	tmp.range(31,0) = size_loop;
-	tmp.range(63,32) = 0;
-	tmp.range(95,64) = 0;
-	tmp.range(127,96) = 0;
-	s.write(tmp);
+  // size represents the number of elements. But the AI Engine uses the number
+  // of loops, and each loop uses 32 elements. So we need to convert the number
+  // of elements to the number of loops.
+  int32_t size_loop = size / 4;
+  ap_int<sizeof(int32_t) * 8 * 4> tmp;
+  tmp.range(31, 0) = size_loop;
+  tmp.range(63, 32) = 0;
+  tmp.range(95, 64) = 0;
+  tmp.range(127, 96) = 0;
+  s.write(tmp);
 
-	for (int j = 0; j < size_loop; j++) {
-		tmp.range(31,0) = input[j*4+0];
-		tmp.range(63,32) = input[j*4+1];
-		tmp.range(95,64) = input[j*4+2];
-		tmp.range(127,96) = input[j*4+3];
-		s.write(tmp);
-	}
+  for (int j = 0; j < size_loop; j++) {
+    tmp.range(31, 0) = input[j * 4 + 0];
+    tmp.range(63, 32) = input[j * 4 + 1];
+    tmp.range(95, 64) = input[j * 4 + 2];
+    tmp.range(127, 96) = input[j * 4 + 3];
+    s.write(tmp);
+  }
 }
 }

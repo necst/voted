@@ -34,7 +34,7 @@ help::
 	$(ECHO) "      Command to remove all the generated files."
 
 
-PLATFORM ?= xilinx_vck5000_gen4x8_qdma_2_202220_1
+PLATFORM ?= xilinx_vek280_base_202510_1
 
 TARGET := hw
 
@@ -61,8 +61,10 @@ testbench_sink_from_aie: testbench/testbench_sink_from_aie.cpp
 run_testbench_sink_from_aie: testbench_sink_from_aie
 	cd testbench && ./testbench_sink_from_aie 
 
-testbench_setupaie: testbench/testbench_setupaie.cpp
-	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -o testbench/$@ $^ -O2
+testbench_setupaie: testbench/testbench_setupaie.cpp setup_aie.cpp
+	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	    testbench/testbench_setupaie.cpp setup_aie.cpp \
+	    -o testbench/$@
 
 run_testbench_setupaie: testbench_setupaie
 	cd testbench && ./testbench_setupaie

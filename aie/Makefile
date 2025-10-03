@@ -26,8 +26,8 @@ all_x86: aie_compile_x86 aie_simulate_x86
 
 # To use VCK5000 XDMA -  PLATFORM := /opt/xilinx/platforms/xilinx_vck5000_gen4x8_xdma_2_202210_1/hw/xilinx_vck5000_gen4x8_xdma_2_202210_1.xsa
 
-PLATFORM ?= /opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1/hw/xilinx_vck5000_gen4x8_qdma_2_202220_1.xsa
-
+#/home/xilinx/2025.1/Vitis/base_platforms/xilinx_vek280_base_202510_1/hw/hw.xsa
+PLATFORM ?= /home/xilinx/2025.1/Vitis/base_platforms/xilinx_vek280_base_202510_1/hw/hw.xsa
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #Clean build products
 clean:

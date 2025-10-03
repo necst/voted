@@ -1,32 +1,33 @@
 /* Auto-generated (stream mode) */
 #include "my_kernel_1.h"
-#include "common.h"
 #include "aie_api/aie.hpp"
 #include "aie_api/aie_adf.hpp"
 #include "aie_api/utils.hpp"
+#include "common.h"
 
-// user compute stub
-void compute_function(aie::vector<int32_t,4>& vec_input2, aie::vector<int32_t,4>& result_output2)
-{
-    // to be filled with user logic
-}
-
+#define VECTOR_SIZE 4
 
 void my_top_function(
-                   input_stream<int32_t>* restrict input2,
-                   output_stream<int32_t>* restrict output2
-)
-{
-    // read header for iteration count
-    aie::vector<int32_t,4> header = readincr_v<4>(input2);
-    int tot_iterations = header[0];
+    adf::input_buffer<
+        uint32_t, adf::extents<adf::inherited_extent, adf::inherited_extent>>
+        &__restrict inA,
+    adf::output_buffer<
+        uint32_t, adf::extents<adf::inherited_extent, adf::inherited_extent>>
+        &__restrict outC) {
 
-    for (int i = 0; i < tot_iterations; i++) {
-        aie::vector<int32_t,4> vec_input2 = readincr_v<4>(input2);
-        aie::vector<int32_t,4> result_output2;
+  auto pA = aie::begin_vector<sizeof(int32) * VECTOR_SIZE>(inA);
+  auto pC = aie::begin_vector<sizeof(int32) * VECTOR_SIZE>(outC);
 
-        compute_function(vec_input2, result_output2);
+  aie::vector<uint32_t, VECTOR_SIZE> vect1;
 
-        writeincr(output2, result_output2);
-    }
+  // read header for iteration count
+  vect1 = aie::load_v<VECTOR_SIZE>(pA);
+  int tot_iterations = vect1[0];
+
+  for (int i = 0; i < tot_iterations; i++) {
+    vect1 = aie::load_v<VECTOR_SIZE>(pA);
+    pA += VECTOR_SIZE;
+    aie::store_v<VECTOR_SIZE>(pC, vect1);
+    pC += VECTOR_SIZE;
+  }
 }
