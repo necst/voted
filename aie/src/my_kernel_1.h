@@ -7,13 +7,11 @@
 #include "common.h"
 #include <adf.h>
 
+extern "C" {
+
 // kernel prototype (stream mode)
 void my_top_function(
-    adf::input_buffer<
-        uint32_t, adf::extents<adf::inherited_extent, adf::inherited_extent>>
-        &__restrict inA,
-    adf::output_buffer<
-        uint32_t, adf::extents<adf::inherited_extent, adf::inherited_extent>>
-        &__restrict outC);
-
+    adf::input_buffer<int32_t, adf::extents<4>> &__restrict inA,
+    adf::output_buffer<int32_t, adf::extents<4>> &__restrict outC);
+}
 #endif // MY_KERNEL_1_H
