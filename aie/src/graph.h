@@ -27,6 +27,8 @@ adf::tiling_parameters tile4_linear = {
         .dimension = 0, // 1D buffer (1 dimension)
         .stride = 4,    // next tile begins after N elements -> try 1 and SEE!
         .wrap = 32 // when 32 blocks of 4 elements have been processed, reset!
+                   // -> put here 128 and you will see 512 values, most of them
+                   // are 0s (as input)
     }}};
 
 // ======================================================
