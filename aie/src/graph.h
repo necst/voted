@@ -1,13 +1,3 @@
-/*
-NOTE:
-Unknown stuff: for some reason, if the Input is 128 elems, I would expect
-128elems output. Instead, it is 512, as it takes some zeros as input and sums
-the value (2 in the kernel).
-
-So the input is bigger than expected, or the kernel is executed more times than
-expected
-*/
-
 #pragma once
 #include "my_kernel_1.h"
 #include <adf.h>
@@ -30,21 +20,21 @@ expected
 //
 
 adf::tiling_parameters tile4_linear = {
-    .buffer_dimension = {512}, // total elements stored in shared buffer
+    .buffer_dimension = {128}, // total elements stored in shared buffer
     .tiling_dimension = {4},   // each DMA transfer = 4 elements (1 tile)
     .offset = {0},             // start from first element
     .tile_traversal = {{
         .dimension = 0, // 1D buffer (1 dimension)
-        .stride = 4,    // next tile begins after N elements -> try 1 and SEE!!
-        .wrap = 512     // when 128 elements are processed, reset
+        .stride = 4,    // next tile begins after N elements -> try 1 and SEE!
+        .wrap = 32 // when 32 blocks of 4 elements have been processed, reset!
     }}};
 
 // ======================================================
 //  Full linear access, no tiling (single DMA burst of 128)
 // ======================================================
 adf::tiling_parameters linear_full = {
-    .buffer_dimension = {512},
-    .tiling_dimension = {512}, // full buffer read/write in one shot
+    .buffer_dimension = {128},
+    .tiling_dimension = {128}, // full buffer read/write in one shot
     .offset = {0}};
 
 using namespace adf;
@@ -96,8 +86,8 @@ public:
     // Allocate shared buffers physically placed inside Memory Tiles
     // ==============================================================
 
-    input_mem_tile = shared_buffer<int32_t>::create({512}, 1, 1);
-    output_mem_tile = shared_buffer<int32_t>::create({512}, 1, 1);
+    input_mem_tile = shared_buffer<int32_t>::create({128}, 1, 1);
+    output_mem_tile = shared_buffer<int32_t>::create({128}, 1, 1);
 
     // Q: "What is num_buffers? How can I modify this?"
     //
