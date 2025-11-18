@@ -27,7 +27,7 @@ help:
 	@echo "  make clean"
 	@echo ""
 
-PLATFORM ?= xilinx_vck5000_gen4x8_qdma_2_202220_1
+PLATFORM ?= xilinx_vek280_base_202510_1
 
 test:
 	@echo "TARGET: $(TARGET)"
