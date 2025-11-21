@@ -136,6 +136,7 @@ public:
 
     // Q: "Can we remove the tile location?"
     // A: Yes, unless you need manual placement. Otherwise ADF places it.
+    // Note: manually placing files speedups AIE compile process
     location<kernel>(my_kernel_1) = tile(1, 1);
   };
 };

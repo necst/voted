@@ -41,12 +41,6 @@ void setup_aie(int32_t size, int32_t *input,
   // of elements to the number of loops.
   int32_t size_loop = size / 4;
   ap_int<sizeof(int32_t) * 8 * 4> tmp;
-  tmp.range(31, 0) = size_loop;
-  tmp.range(63, 32) = 0;
-  tmp.range(95, 64) = 0;
-  tmp.range(127, 96) = 0;
-  s.write(tmp);
-
   for (int j = 0; j < size_loop; j++) {
     tmp.range(31, 0) = input[j * 4 + 0];
     tmp.range(63, 32) = input[j * 4 + 1];

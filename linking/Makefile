@@ -1,28 +1,9 @@
 # MIT License
-
-# Copyright (c) 2023 Paolo Salvatore Galfano, Giuseppe Sorrentino
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+# Copyright (...)
 
 ECHO=@echo
 
-.PHONY: help
+.PHONY: help clean all package
 
 help::
 	$(ECHO) ""
@@ -33,33 +14,62 @@ help::
 	$(ECHO) "      Command to remove all the generated files."
 	$(ECHO) ""
 
-
-PLATFORM ?= xilinx_vek280_base_202510_1
-
+BASE_PLATFORM_FOLDER ?=/home/xilinx/2025.1/Vitis/base_platforms
 TARGET := hw
 
-# Use --optimize 3 to enable post-route optimizations. This may improve the bitstream but SIGNIFICANTLY increase compilation time
-# --kernel_frequency 200
-XOCCLFLAGS := --platform $(PLATFORM) -t $(TARGET)  -s -g
+# Path verso i file del Versal Common Image
+VERSAL_COMMON := /home/gsorrentino/Desktop/VersalCommon/xilinx-versal-common-v2025.1
+
 
 AIE_OBJ := ../aie/libadf.a
-XOS     := ../fpga/setup_aie_$(TARGET).xo 
-XOS     += ../fpga/sink_from_aie_$(TARGET).xo 
+XOS     := ../fpga/setup_aie_$(TARGET).xo
+XOS     += ../fpga/sink_from_aie_$(TARGET).xo
 XSA_OBJ := overlay_$(TARGET).xsa
 XCLBIN  := overlay_$(TARGET).xclbin
 
-.phony: clean
+################################################################################
+# Build rules
+################################################################################
 
-all: $(XCLBIN)
+all: package
+		
+# Linking of kernels + AIE to produce XSA
 
-# The XSA_OBJ dependency is not required, if the target platform is a non Versal alveo accelerator card.
-$(XCLBIN): $(XSA_OBJ) $(AIE_OBJ)
-	v++ -p -t $(TARGET) -f $(PLATFORM) $^ -o $@ --package.boot_mode=ospi
-
-# This command is not required, if the target platform is a non Versal alveo accelerator card.
 $(XSA_OBJ): $(XOS) $(AIE_OBJ)
-	v++ -l $(XOCCFLAGS) $(XOCCLFLAGS) --config xclbin_overlay.cfg -o $@ $^
+	v++ -l \
+		--platform $(BASE_PLATFORM_FOLDER)/xilinx_vek280_base_202510_1/xilinx_vek280_base_202510_1.xpfm \
+		-t $(TARGET) \
+		-s -g \
+		--config xclbin_overlay.cfg \
+		-o $(XSA_OBJ) \
+		$(XOS) $(AIE_OBJ)
+
+
+# XCLBIN generation with FULL PACKAGING
+# Equivalent to:
+# v++ -p -t hw -f platform --package.rootfs=... etc.
+package: $(XSA_OBJ)
+	v++ -p \
+		-t $(TARGET) \
+		-f $(BASE_PLATFORM_FOLDER)/xilinx_vek280_base_202510_1/xilinx_vek280_base_202510_1.xpfm \
+		--package.rootfs=$(VERSAL_COMMON)/rootfs.ext4 \
+		--package.image_format=ext4 \
+		--package.boot_mode=sd \
+		--package.kernel_image=$(VERSAL_COMMON)/Image \
+		--package.out_dir package_output \
+		--output $(XCLBIN) \
+		--package.sd_file=../sw/host_code.exe \
+		--temp_dir package_temp \
+		$(XSA_OBJ) \
+		$(AIE_OBJ)
+
+
+################################################################################
+# Clean
+################################################################################
 
 clean:
-	$(RM) -r _x .Xil .ipcache *.ltx *.log *.sh *.jou *.info *.xclbin *.xo.* *.str *.xsa *.cdo.bin *bif *BIN *.package_summary *.link_summary *.txt *.bin && rm -rf cfg emulation_data sim
-	
+	$(RM) -r _x .Xil .ipcache *.ltx *.log *.sh *.jou *.info *.xclbin \
+	       *.xo.* *.str *.xsa *.cdo.bin *bif *BIN *.package_summary \
+	       *.link_summary *.txt *.bin cfg emulation_data sim \
+	       package_temp package_output

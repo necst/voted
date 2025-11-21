@@ -1,69 +1,97 @@
-# MIT License
 
-# Copyright (c) 2023 Paolo Salvatore Galfano, Giuseppe Sorrentino
+F_PROJ_ROOT ?= $(shell bash -c 'export MK_PATH=$(MK_PATH); echo $${MK_PATH%/AI_Engine_Development/*}')
 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
+# Sysroot set automatically by environment-setup-cortexa72-cortexa53-amd-linux
+SDKTARGETSYSROOT ?= ${SYSROOT}
 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+TARGET := hw_emu
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+BASE_PLATFORM ?= ${PLATFORM_REPO_PATHS}/xilinx_vek280_base_202510_1/xilinx_vek280_base_202510_1.xpfm
 
-ECHO=@echo
+################################################################################
+# HOST COMPILATION (C++ → ARM aarch64)
+################################################################################
 
-.PHONY: help
+# Must be set by sourcing the Common Image SDK environment
+# → aarch64-xilinx-linux-g++ must exist
+GCC_FLAGS := -Wall -c -std=c++17 -Wno-int-to-pointer-cast \
+             --sysroot=$(SDKTARGETSYSROOT)
 
-help::
-	$(ECHO) "Makefile Usage:"
-	$(ECHO) "  make all"
-	$(ECHO) ""
-	$(ECHO) "  make clean"
-	$(ECHO) "      Command to remove all the generated files."
-	$(ECHO) ""
+GCC_INCLUDES := -I$(SDKTARGETSYSROOT)/usr/include \
+                -I$(SDKTARGETSYSROOT)/usr/include/xrt \
+                -I$(XILINX_VITIS)/aietools/include \
+                -I$(XILINX_VITIS)/include \
+                -I../aie \
+                -I./
 
-.phony: clean
+GCC_LIB := -lxrt_coreutil \
+           -L${XILINX_XRT}/lib \
+           --sysroot=${SDKTARGETSYSROOT}
 
-################## software build for XRT Native API code
-CXXFLAGS := -std=c++17 -Wno-deprecated-declarations
-CXXFLAGS += -I$(XILINX_XRT)/include -I$(XILINX_HLS)/include
+################################################################################
+# PHONY
+################################################################################
+.ONESHELL:
+.PHONY: clean all kernels aie sim xsa package
 
-LDFLAGS := -L$(XILINX_XRT)/lib
-LDFLAGS += $(LDFLAGS) -lxrt_coreutil
+################################################################################
+# VARIABLE CHECKS (CORRECT AND SAFE)
+################################################################################
 
-# You can use them for including something. For example, opencv
-#LIBS = `pkg-config --libs opencv`
-#CFLAGS = `pkg-config --cflags opencv`
+check_defined = \
+	$(strip $(foreach v,$1, \
+		$(call __check_defined,$(v),$(strip $(value 2)))))
 
-EXECUTABLE := host_overlay.exe
+__check_defined = \
+	$(if $(value $1),, \
+		$(error Undefined $1$(if $2, ($2))))
+guard-PLATFORM_REPO_PATHS:
+	$(call check_defined, PLATFORM_REPO_PATHS, Set your base_platform path.)
 
-HOST_SRCS := ./host_code.cpp
+guard-ROOTFS:
+	$(call check_defined, ROOTFS, Set to: xilinx-versal-common-v2025.1/rootfs.ext4)
 
-all: build_sw
-build_sw: $(EXECUTABLE)
+guard-IMAGE:
+	$(call check_defined, IMAGE, Set to: xilinx-versal-common-v2025.1/Image)
 
-run_sw:
-	./$(EXECUTABLE)
+guard-CXX:
+	$(call check_defined, CXX, Run environment-setup-cortexa72-cortexa53-amd-linux!)
 
-#Eventually add LIBS and CFLAGS
-$(EXECUTABLE): $(HOST_SRCS)
-	$(CXX) -o $(EXECUTABLE) $^ $(CXXFLAGS) $(LDFLAGS) 
-	@rm -f ./overlay_hw.xclbin
-	@rm -f ./overlay_hw_emu.xclbin
-	@ln -s ../linking/overlay_hw.xclbin
-	@ln -s ../linking/overlay_hw_emu.xclbin
+guard-SDKTARGETSYSROOT:
+	$(call check_defined, SDKTARGETSYSROOT, Run environment-setup-cortexa72-cortexa53-amd-linux!)
 
-################## clean up
+
+################################################################################
+# HOST COMPILATION FOR ARM
+################################################################################
+
+EXECUTABLE = host_code.exe
+
+build_sw: guard-CXX guard-SDKTARGETSYSROOT
+	$(CXX) $(GCC_FLAGS) $(GCC_INCLUDES) -o host.o host_code.cpp
+	$(CXX) host.o $(GCC_LIB) -std=c++17 -o $(EXECUTABLE)
+	@echo "COMPLETE: Host application created."
+
+################################################################################
+# EMULATION RUN
+################################################################################
+
+run_hw_emu:
+ifeq (${TARGET},hw_emu)
+	@echo "Launching HW Emulation..."
+	cd ../linking/package_output && \
+	./launch_hw_emu.sh \
+		-aie-sim-options ../../aie/aiesimulator_output/aiesim_options.txt \
+		-add-env AIE_COMPILER_WORKDIR=../../aie/Work
+else
+	@echo "Hardware build, no emulation executed."
+endif
+
+################################################################################
+# CLEAN
+################################################################################
+
 clean:
-	$(RM) -r _x .Xil *.ltx *.log *.jou *.info host_overlay.exe *.xo *.xo.* *.str *.xclbin .run *.wdb *.json *.wcfg *.protoinst *.csv
-	
+	rm -rf _x *.o *.jou *.log *.xsa *.xclbin Work
+	rm -rf pl_kernels/*.xo aiesimulator_output x86simulator_output
+	rm -rf sw/*.o sw/*.exe sw/*.log sw/*.elf sw/*_x sw/*.xpe sw/*.json sw/sd_card*
