@@ -4,7 +4,6 @@
 The following steps are intended to experiment with **Voted** using the pre-designed kernels.
 Notably, the default platform for this section is a versal vck5000 2022.2 QDMA. 
 However, different platforms can be specified to the make commands.
----
 
 ## **Step 1 — AIE Design**
 
