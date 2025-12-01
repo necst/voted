@@ -1,179 +1,191 @@
+# Development – How To Use Voted
 
-# Development - How To Use Voted
+The following steps describe how to experiment with Voted using the pre-designed kernels.
+The default platform for this workflow is a Versal VCK5000 2022.2 QDMA, although different platforms can be specified in the `make` commands.
 
-The following steps are intended to experiment with **Voted** using the pre-designed kernels.
-Notably, the default platform for this section is a versal vck5000 2022.2 QDMA. 
-However, different platforms can be specified to the make commands.
+---
 
-## **Setup**
-To follow these instructions, you need to source both XRT and VITIS to the desired version. This repository has been verified
-for Vitis 2022.1, 2022.2 and 2023.1 for Versal-based devices. Up to 2024.2 for non-versal devices. 
+## ⚙️ Setup
 
-To each Vitis version, we source the corresponding XRT version.
+To follow these instructions, you must source both XRT and Vitis for the desired version.
+This repository has been verified using:
 
-For simplicity: 
+- Vitis 2022.1, 2022.2, 2023.1 for Versal-based devices
+- Up to 2024.2 for non-Versal devices
+
+For each Vitis version, use its corresponding XRT version.
+
+For convenience, you may run:
 
 ```bash
 source ./setup_all.sh
 ```
 
-## **Step 1 — AIE Design**
+---
 
-Go into the **AIE** folder:
+## 🧠 Step 1 — AIE Design
+
+Enter the AIE directory:
 
 ```bash
 cd aie
 ```
 
-Then use the commands for compiling and simulating the **AIE x86 flow**:
+### AIE x86 Flow
+
+Compile and simulate using the x86 functional model:
 
 ```bash
 make aie_compile_x86
 make aie_simulate_x86
 ```
 
-This provides a *functional simulation*, intended for the early detection of API/logic errors.  
+This provides a functional simulation for early API or logic error detection.  
+The x86 model does not implement the VLIW architecture but is significantly faster and ideal for initial testing.
 
-The **AIE x86 flow** does **not** consider the underlying VLIW architecture, but it is significantly faster and strongly suggested as an early step.
+### VLIW Evaluation
 
-### VLIW Evaluation 
-
-For a more accurate test that **considers the actual VLIW architecture**, use:
+To simulate using the actual AIE VLIW architecture:
 
 ```bash
 make aie_compile
 make aie_simulate
 ```
 
-This flow causes the **AIE compiler** to:
+This stage:
 
-- generate the **libadf.a** file (required for bitstream creation),
-- evaluate the code using the real **AIE VLIW architecture** rather than the simplified x86 model.
+- Generates `libadf.a` (required for bitstream generation)
+- Evaluates the code using the real VLIW architecture
 
-This VLIW evaluation is slower but essential before final integration and hardware generation.
+Although slower, this step is essential before final integration.
 
 ---
 
-### Adding a New Kernel
+### 🧩 Adding a New Kernel
 
-To add a new kernel, you can either:
-
-- **A)** Use the template generator and modify it.  
-- **B)** Create your `.cpp` file from scratch.
+You may add a new kernel in two ways:
 
 #### A) Using the Template Generator
-
-Generate a kernel template with:
 
 ```bash
 make gen_kernel
 ```
 
-Before running the command, remember to modify the **kernel.cfg** file,  
-which specifies the parameters used by the automation (kernel name, ports, type, etc.).
+Before running this command, edit the `kernel.cfg` file (kernel name, ports, type, etc.).
 
-#### B) Creating a Kernel From Scratch
+#### B) Creating a Kernel Manually
 
-You may also write your `.cpp` file manually if you prefer full control. 
+Simply create your own `.cpp` file.
 
 ---
 
 ### Kernel Integration
 
-The devised kernel must be integrated into the `graph.h` file, which connects the various I/O components.
+Your kernel must be connected inside `graph.h`, where all input and output PLIO nodes are defined.
 
 ---
 
 ### Input File for Kernel Evaluation
 
-To evaluate a kernel, you need an input file placed in the `./data/` folder.
-
-Within the graph.h, you can specify the input file to be used for **PLIO simulation**.
+Place your input test file inside the `./data/` directory.  
+The file used for PLIO simulation is referenced inside `graph.h`.
 
 ---
 
-## **Step 2: FPGA Design**
+## 🔧 Step 2 — FPGA Design
 
-Voted assumes HLS kernels are written under the `fpga` folder.
+Voted assumes all HLS kernels reside in the `fpga/` directory.
 
-To compile all the provided kernels:
+To compile all kernels:
 
 ```bash
 make compile TARGET=<hw/hw_emu>
 ```
 
-Note that the `compile` command in the Makefile triggers kernel-specific compilation rules.  
-Each kernel rule produces a `.xo` file, which is then used in the linking phase.
+This invokes all kernel rules, producing `.xo` files for each kernel.
 
-Each kernel can also be computed independenty through: 
+You may also compile a single kernel manually:
 
 ```bash
-make <kernel_name>_<TARGET>.xo 
+make <kernel_name>_<TARGET>.xo
 ```
 
-Once the kernels are prepared, the VOTED methodology suggests writing a **single unified testbench** that:
+### Unified Testbench
 
-1. calls the FPGA kernel that writes the data  
-2. uses the provided API to write such data into a PLIO-friendly file  
-3. runs the AIE (x86 or VLIW) simulation  
-4. collects the simulation output files and adapts them into a stream (using VOTED utils function or custom ones)  
-5. uses the generated stream as input for evaluating the HLS kernels  
+The VOTED methodology recommends using a unified testbench that:
 
-In this example, the `sink_from_aie` testbench reads the output file produced by AIE, while the `setup_aie` testbench prepares the PLIO output files.
+1. Calls the FPGA kernel that produces data  
+2. Uses the provided API to write data into a PLIO-compliant format  
+3. Runs AIE simulation (x86 or VLIW)  
+4. Converts simulation outputs into a stream (using VOTED utilities or custom scripts)  
+5. Feeds the generated stream into the HLS kernels for testing  
 
-We strongly encourage extending the kernels so that the written HLS kernel **matches the AI Engine PLIO structure** expected by VOTED.
+Example utilities:  
+- `sink_from_aie` reads AIE output  
+- `setup_aie` prepares PLIO output files  
 
-To run the testbench: 
+We recommend ensuring that your HLS kernels match the expected AI Engine PLIO structure.
+
+Run the testbench:
 
 ```bash
 make run_testbench_<kernelname>
 ```
 
-## **Step 3: Linking**
+---
 
-At this point, you have completed the design for the AI Engine and FPGA component. 
-So, it is time to connect them together.
+## 🛠 Step 3 — Linking
+
+After completing AIE and FPGA implementation, link the system.
+
+Enter the linking directory:
 
 ```bash
 cd linking
 ```
 
-Adjusting the xclbin_overlay.cfg file, it is possible to specify: 
-- **nk** : to specify the kernel name, quantity and eventual alias.
-- **slr** : slr assigned to each kernel
-- **memory**: memory connection per each kernel accessing off-chip memory (HBM, DDR, or simply MC_NOC0 is a NoC exist)
-- **stream_connect**: connection between kernels. AI engine PLIO needs to be connected through FPGA streams.
-- eventual vivado properties
+Configuration options in `xclbin_overlay.cfg` include:
 
-Goal of this section is to create the `.xclbin`  file to be uploaded on the deployment machine. This is 
-the only file needed by the accelerator (in conjunction with the host code for calling the accelerator).
+- `nk`: kernel name, number of instances, and optional alias  
+- `slr`: SLR assignment  
+- `memory`: memory bank mapping (HBM, DDR, MC_NOC0, etc.)  
+- `stream_connect`: stream connections between kernels and AIE PLIO  
+- Additional Vivado properties  
+
+Build the `.xclbin` file:
 
 ```bash
 make all TARGET=<hw/hw_emu>
 ```
 
-Notably, The XSA_OBJ dependency called by this command is not required, 
-if the target platform is a non Versal alveo accelerator card.
+Note: `XSA_OBJ` is not required on non-Versal Alveo accelerator cards.
 
-## **Step 4: Host Code**
+---
 
-To use the accelerator, you need to prepare your host-code. Despite the host-code is independent from the
-accelerator (you may use PYNQ if your accelerator supports it), VOTED comes with a C++ XRT based host-code,
-validated on both versal system, alveo systems and HBM-based devices with almost no modification. 
+## 💻 Step 4 — Host Code
 
-To compile:
+To use the accelerator, prepare the host application.  
+VOTED includes a C++ XRT-based host program validated on:
+
+- Versal platforms  
+- Alveo cards  
+- HBM-based accelerators  
+
+### Build the Host Application
 
 ```bash
 make build_sw
 ```
 
-For hardware emulation only: 
+### Enable Hardware Emulation
 
 ```bash
 source ./setup_emu.sh -s on
 ```
 
-To run the hw/hw_emulation example
+### Run the hw/hw_emu example
+
+To run the hardware or hardware emulation, you just have to run the executable on the deploying machine (or in the development machine with the hw emulation environmnet enabled).
 
 ```bash
 ./host_overlay.exe
