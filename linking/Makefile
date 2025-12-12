@@ -18,7 +18,7 @@ BASE_PLATFORM_FOLDER ?=/home/xilinx/2025.1/Vitis/base_platforms
 TARGET := hw
 
 # Path verso i file del Versal Common Image
-VERSAL_COMMON := /home/gsorrentino/Desktop/VersalCommon/xilinx-versal-common-v2025.1
+VERSAL_COMMON := /opt/AMD/common_devices/xilinx-versal-common-v2025.1
 
 
 AIE_OBJ := ../aie/libadf.a

@@ -36,8 +36,12 @@ test:
 
 #
 ## Build hardware (xclbin) objects
-build_hw: compile_fpga compile_aie hw_link
+build_hw: compile_fpga compile_aie compile_host hw_link
 #
+
+compile_host:
+	@make -C ./sw build_sw 
+	
 compile_aie:
 	@make -C ./aie aie_compile SHELL_NAME=$(SHELL_NAME)
 #
@@ -45,7 +49,7 @@ compile_fpga:
 	@make -C ./fpga compile TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 hw_link:
-	@make -C ./linking all TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
+	@make -C ./linking package TARGET=$(TARGET) PLATFORM=$(PLATFORM) SHELL_NAME=$(SHELL_NAME)
 #
 ## Build software object
 build_sw: 
