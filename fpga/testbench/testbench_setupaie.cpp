@@ -56,7 +56,6 @@ int main(int argc, char *argv[]) {
   // practically write the AIE input write into data
 
   // If the function worked I can print values in the stream and check them
-
   write_stream_to_file_unpack<ap_int<sizeof(float) * 8 * 4>, float>(
       s, "../../aie/data/in_plio_source_1.txt", PLIO_32);
 
