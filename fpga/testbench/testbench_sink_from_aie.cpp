@@ -22,49 +22,46 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <unistd.h>
-#include <sys/stat.h>
-#include <fstream>
-#include <ap_axi_sdata.h>
 #include "../sink_from_aie.hpp"
+#include <ap_axi_sdata.h>
 #include <cmath>
+#include <fstream>
+#include <sys/stat.h>
+#include <unistd.h>
 
+#include "utils.hpp"
 
-int main(int argc, char *argv[]) { 
-    // This testbech will test the sink_from_aie kernel
-    // The kernel will receive a stream of data from the AIE
-    // and will write it into memory
+int main(int argc, char *argv[]) {
+  // This testbech will test the sink_from_aie kernel
+  // The kernel will receive a stream of data from the AIE
+  // and will write it into memory
 
-    // I will create a stream of data
-    hls::stream<int32_t> s;
-    int size = 32;
-    // I create the buffer to write into memory
-    int *buffer = new int[size];
+  // I will create a stream of data
+  hls::stream<int32_t> s;
+  int size = 128;
+  // I create the buffer to write into memory
+  int *buffer = new int[size];
 
-    // I have to read the output of AI Engine from the file. 
-    // Otherwise, I have no input for my testbench
-    std::ifstream file;
-    file.open("../../aie/x86simulator_output/data/out_plio_sink_1.txt");
-    if (!file) {
-        std::cerr << "Unable to open file ../../aie/x86simulator_output/data/out_plio_sink_1.txt - as this file is source data, adjust your files in the build directory" << std::endl;
-        return 1;
-    }
+  // I have to read the output of AI Engine from the file.
+  // Otherwise, I have no input for my testbench
+  const std::string path =
+      "../../aie/x86simulator_output/data/out_plio_sink_1.txt";
+  // Read integer tokens from a text file into an HLS stream, skipping the
+  // "TLAST" marker tokens (they can appear interleaved with data in simulator
+  // logs).
+  read_stream_from_file_skip_tlast(s, path);
 
-    for (int i = 0; i < size; i++) {
-        int x;
-        file >> x;
-        s.write(x);
-    }
+  sink_from_aie(s, buffer, s.size());
 
-    sink_from_aie(s,buffer,size);
+  // if the kernel is correct, it will contains the expected data.
+  // I can print them, for example, to check that they are equal to the output
+  // of AIE
+  for (unsigned int i = 0; i < size; i++) {
+    std::cout << buffer[i] << std::endl;
+  }
+  delete[] buffer;
 
-    // if the kernel is correct, it will contains the expected data.
-    // I can print them, for example, to check that they are equal to the output of AIE
-    for (unsigned int i = 0; i < size; i++) {
-        std::cout << buffer[i] << std::endl;
-    }
-    delete[] buffer;
-
-    // Note that: you may also have a code that runs the AI Engine from your kernel, and so a testbench
-    // that simulates the entire application flow. It is useful, but still I would suggest to use single kernel testbench too.
+  // Note that: you may also have a code that runs the AI Engine from your
+  // kernel, and so a testbench that simulates the entire application flow. It
+  // is useful, but still I would suggest to use single kernel testbench too.
 }

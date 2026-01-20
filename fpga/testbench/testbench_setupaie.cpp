@@ -23,18 +23,13 @@ SOFTWARE.
 */
 
 #include "../setup_aie.hpp"
+#include "utils.hpp"
 #include <ap_axi_sdata.h>
 #include <cmath>
 #include <fstream>
 #include <iostream>
 #include <sys/stat.h>
 #include <unistd.h>
-
-void read_from_stream(float *buffer, hls::stream<float> &stream, size_t size) {
-  for (unsigned int i = 0; i < size; i++) {
-    buffer[i] = stream.read();
-  }
-}
 
 int main(int argc, char *argv[]) {
   // In a testbench, you will use you kernel as a C function
@@ -61,32 +56,9 @@ int main(int argc, char *argv[]) {
   // practically write the AIE input write into data
 
   // If the function worked I can print values in the stream and check them
-  std::ofstream file;
-  file.open("../../aie/data/in_plio_source_1.txt");
-  if (file.is_open()) {
-    // read the stream of ap_int
-    ap_int<sizeof(int) * 8 * 4> tmp;
-    for (unsigned int i = 0; i < (size / 4) + 1; i++) {
-      tmp = s.read();
-      for (unsigned int j = 0; j < 4; j++) {
-        float val = tmp.range(31 + j * 32, j * 32);
-        file << val << std::endl;
-        std::cout << val << std::endl;
-      }
-    }
-  } else {
-    std::cout << "Error opening file - Ignore this error if you are in "
-                 "Full_HLS_MODE - Here is the kernel output"
-              << std::endl;
-    ap_int<sizeof(int) * 8 * 4> tmp;
-    for (unsigned int i = 0; i < (size / 4) + 1; i++) {
-      tmp = s.read();
-      for (unsigned int j = 0; j < 4; j++) {
-        float val = tmp.range(31 + j * 32, j * 32);
-        std::cout << val << std::endl;
-      }
-    }
-  }
+
+  write_stream_to_file_unpack<ap_int<sizeof(float) * 8 * 4>, float>(
+      s, "../../aie/data/in_plio_source_1.txt", PLIO_32);
 
   // In a different, complete, test, here you may even run the AIE and then
   // continue your test. But for this modular test...it's enough to check the
