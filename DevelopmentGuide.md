@@ -16,11 +16,32 @@ For each Vitis version, use its corresponding XRT version.
 
 For convenience, you may run:
 
+### 1) First-time setup
+
+On the first setup, run the `sdh.sh` script located in:
+
+`/opt/AMD/common_devices/xilinx-versal-common-v2025.1/`
+
+```bash
+cd /opt/AMD/common_devices/xilinx-versal-common-v2025.1/
+./sdh.sh
+```
+
+### 2) Next times
+
+After the initial setup, you can directly source:
+
+```bash
+source /opt/petalinux/2025.1/environment-setup-cortexa72-cortexa53-amd-linux
+```
+
+For convenience, after the initial setup, you can directlyi source 
+
 ```bash
 source ./setup_all.sh
 ```
 
-## Step 0 - Setup
+## Step 0 - Setup check
 
 For using the AIEML feature ensure you have
 1. The AIE-ML License installed (or connected to your license server)
@@ -153,6 +174,8 @@ make build_sw
 
 ### Run Hardware Emulation
 
+**WARNING** You must run at least once the aie_simulation to have the simulator output, needed as input to the hw_emu
+
 ```bash
 make run_hw_emu
 ```
@@ -166,7 +189,8 @@ To run the hardware or hardware emulation, you just have to run the executable o
 ```bash
 ./host_overlay.exe
 ```
-
+**WARNING** I am getting issues (QEMU HANGING) when lunching hardware 
+emulation in TMUX
 
 ---
 

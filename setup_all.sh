@@ -21,8 +21,8 @@ source $PETALINUX
 echo "Unsetting LD_LIBRARY_PATH for SDK safety..."
 unset LD_LIBRARY_PATH
 
-echo "Sourcing Versal Common Image SDK environment..."
-source $COMMON_IMAGE_ENV
+#echo "Sourcing Versal Common Image SDK environment..."
+#source $COMMON_IMAGE_ENV
 
 echo "Exporting ROOTFS and IMAGE..."
 export ROOTFS=/opt/AMD/common_devices/xilinx-versal-common-v2025.1/rootfs.ext4

@@ -14,6 +14,26 @@ every single component correctness even integrated with the output of other comp
 instantiates and links the devised components, allowing experts to guide the resource allocation strategy. Finally, VOTED offers
 a ready-to-use host structure IV , to perform hardware emulation or to target the accelerator card for deploying._
 
+## ⚙️ Setup
+
+### 1) First-time setup
+
+On the first setup, run the `sdh.sh` script located in:
+
+`/opt/AMD/common_devices/xilinx-versal-common-v2025.1/`
+
+```bash
+cd /opt/AMD/common_devices/xilinx-versal-common-v2025.1/
+./sdh.sh
+```
+
+### 2) Next times
+
+After the initial setup, you can directly source:
+
+```bash
+source /opt/petalinux/2025.1/environment-setup-cortexa72-cortexa53-amd-linux
+```
 
 ## 🗂️ Main Structure
 
