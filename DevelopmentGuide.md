@@ -172,28 +172,6 @@ Remember to use the arch compiler!
 make build_sw
 ```
 
-### Run Hardware Emulation
-
-**WARNING** You must run at least once the aie_simulation to have the simulator output, needed as input to the hw_emu
-
-```bash
-make run_hw_emu
-```
-**Note**: such step is available only after STEP 4 -- the package must be prepared for hardware emulation.
-Output of this command is a qemu terminal where it is possible to run the example
-
-### Run the hw/hw_emu example
-
-To run the hardware or hardware emulation, you just have to run the executable on the deploying machine (or in the development machine with the hw emulation environmnet enabled).
-
-```bash
-./host_overlay.exe
-```
-**WARNING** I am getting issues (QEMU HANGING) when lunching hardware 
-emulation in TMUX
-
----
-
 ## 🛠 Step 4 — Linking
 
 After completing AIE and FPGA implementation, link the system.
@@ -214,4 +192,20 @@ For the target VEK280 the building flow is slightly different
 ```bash
 make all TARGET=<hw/hw_emu>
 ```
+
+## 🛠 Step 5 — Run HW Emu Example
+
+### Run the hw/hw_emu example
+
+To run the hardware or hardware emulation, you just have to run the executable on the deploying machine (or in the development machine with the hw emulation environmnet enabled).
+
+```bash
+cd package_output
+./launch_hw_emu.sh
+./<run executable>
+```
+**WARNING** I am getting issues (QEMU HANGING) when lunching multiple QEMU. Check all processes exited before running new QEMUs from the same folder. 
+
+
+
 
