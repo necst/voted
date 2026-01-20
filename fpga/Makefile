@@ -54,18 +54,31 @@ setup_aie_$(TARGET).xo: ./setup_aie.cpp
 sink_from_aie_$(TARGET).xo: ./sink_from_aie.cpp
 	v++ $(XOCCFLAGS) --kernel sink_from_aie -c -o $@ $<
 
+
 # as every C++ program, you may add libraies like: `pkg-config --libs opencv` `pkg-config --cflags opencv`
-testbench_sink_from_aie: testbench/testbench_sink_from_aie.cpp
-	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -o testbench/$@ $^ -O2  
+testbench_sink_from_aie: testbench/testbench_sink_from_aie.cpp sink_from_aie.cpp
+	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	    testbench/testbench_sink_from_aie.cpp sink_from_aie.cpp \
+	    -o testbench/$@
 	
 run_testbench_sink_from_aie: testbench_sink_from_aie
 	cd testbench && ./testbench_sink_from_aie 
 
-testbench_setupaie: testbench/testbench_setupaie.cpp
-	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -o testbench/$@ $^ -O2
+testbench_setupaie: testbench/testbench_setupaie.cpp setup_aie.cpp
+	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	    testbench/testbench_setupaie.cpp setup_aie.cpp \
+	    -o testbench/$@
 
 run_testbench_setupaie: testbench_setupaie
 	cd testbench && ./testbench_setupaie
+
+testbench_e2e: testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp
+	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	    testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp \
+	    -o testbench/$@
+
+run_testbench_e2e: testbench_e2e
+	cd testbench && ./testbench_e2e
 
 # Run a full HLS test: csim, csynth, and cosim using Vivado HLS
 # Usage: make full_test_hls src=your_file.cpp tb=your_testbench.cpp
