@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root versionMajor="1" versionMinor="0">
+  <kernel name="krnl_and" language="rtl" vlnv="user.org:user:krnl_and:1.0">
+    <ports>
+      <port name="ap_clk"   mode="input" type="clock"/>
+      <port name="ap_rst_n" mode="input" type="reset"/>
+      <port name="s_axi_control" mode="slave" type="axilite"/>
+    </ports>
+
+    <args>
+      <arg name="in1" id="0" port="s_axi_control" offset="0x10" size="4" type="uint"/>
+      <arg name="in2" id="1" port="s_axi_control" offset="0x18" size="4" type="uint"/>
+      <arg name="out" id="2" port="s_axi_control" offset="0x20" size="4" type="uint" direction="out"/>
+    </args>
+  </kernel>
+</root>

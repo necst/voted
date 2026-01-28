@@ -1,0 +1,29 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+| Date         : Wed Jan 28 10:42:49 2026
+| Host         : fpga-santa-vm-1 running 64-bit Ubuntu 22.04.5 LTS
+| Command      : report_utilization -hierarchical -file build/util_krnl_and.rpt
+| Design       : krnl_and
+| Device       : xcu50-fsvh2104-2-e
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++--------------+--------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|   Instance   | Module | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++--------------+--------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| krnl_and     |  (top) |         19 |         19 |       0 |    0 |  21 |      0 |      0 |    0 |          0 |
+|   (krnl_and) |  (top) |         18 |         18 |       0 |    0 |  21 |      0 |      0 |    0 |          0 |
++--------------+--------+------------+------------+---------+------+-----+--------+--------+------+------------+
+
+
