@@ -16,7 +16,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.PHONY: help build_hw build_sw testbench_all pack build_and_pack clean clean_aie clean_FPGA clean_hw clean_sw
+.PHONY: help build_hw build_sw testbench_all pack build_and_pack clean clean_aie clean_FPGA clean_hw clean_sw clean_fpga_hdl
 
 help:
 	@echo "Makefile Usage:"
@@ -89,3 +89,7 @@ clean_hw:
 
 clean_sw: 
 	@make -C ./sw clean
+
+clean_fpga_hdl:
+	@make -C ./fpga clean_hdl
+
