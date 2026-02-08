@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vitis_hls" Owner="gsorrentino" Host="fpga-santa-vm-1" Pid="3491575" HostCore="48" HostMemory="131886920">
-    </Process>
-</ProcessHandle>

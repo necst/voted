@@ -1,9 +1,0 @@
-<pragmas>
-<pragma file="" line="0" pragmaType="inline" parentfunction="read" off="0" region="0" recursive="0"/>
-<pragma file="" line="0" pragmaType="inline" parentfunction="read" off="0" region="0" recursive="0"/>
-<pragma file="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp" line="36" pragmaType="interface" parentfunction="s2mm" mode="axis" port="input_stream" register="0" register_mode="both" name="" depth="-1"/>
-<pragma file="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp" line="37" pragmaType="interface" parentfunction="s2mm" mode="m_axi" port="output" bundle="gmem1" offset="slave" name="" depth="100" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
-<pragma file="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp" line="39" pragmaType="interface" parentfunction="s2mm" mode="s_axilite" port="output" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
-<pragma file="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp" line="40" pragmaType="interface" parentfunction="s2mm" mode="s_axilite" port="size" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
-<pragma file="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp" line="41" pragmaType="interface" parentfunction="s2mm" mode="s_axilite" port="" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
-</pragmas>
