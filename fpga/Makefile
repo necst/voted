@@ -44,37 +44,37 @@ TARGET := hw
 
 XOCCFLAGS := --platform $(PLATFORM) -t $(TARGET)  -s -g
 
-compile: setup_aie_$(TARGET).xo sink_from_aie_$(TARGET).xo 
+compile: mm2s_$(TARGET).xo s2mm_$(TARGET).xo 
 
 # Use --optimize 3 to enable post-route optimizations. This may improve the bitstream but SIGNIFICANTLY increase compilation time
-setup_aie_$(TARGET).xo: ./setup_aie.cpp
-	v++ $(XOCCFLAGS) --kernel setup_aie -c -o $@ $<
+mm2s_$(TARGET).xo: ./mm2s.cpp
+	v++ $(XOCCFLAGS) --kernel mm2s -c -o $@ $<
 
 # Use --optimize 3 to enable post-route optimizations. This may improve the bitstream but SIGNIFICANTLY increase compilation time
-sink_from_aie_$(TARGET).xo: ./sink_from_aie.cpp
-	v++ $(XOCCFLAGS) --kernel sink_from_aie -c -o $@ $<
+s2mm_$(TARGET).xo: ./s2mm.cpp
+	v++ $(XOCCFLAGS) --kernel s2mm -c -o $@ $<
 
 
 # as every C++ program, you may add libraies like: `pkg-config --libs opencv` `pkg-config --cflags opencv`
-testbench_sink_from_aie: testbench/testbench_sink_from_aie.cpp sink_from_aie.cpp
+testbench_s2mm: testbench/testbench_s2mm.cpp s2mm.cpp
 	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
-	    testbench/testbench_sink_from_aie.cpp sink_from_aie.cpp \
+	    testbench/testbench_s2mm.cpp s2mm.cpp \
 	    -o testbench/$@
 	
-run_testbench_sink_from_aie: testbench_sink_from_aie
-	cd testbench && ./testbench_sink_from_aie 
+run_testbench_s2mm: testbench_s2mm
+	cd testbench && ./testbench_s2mm 
 
-testbench_setupaie: testbench/testbench_setupaie.cpp setup_aie.cpp
+testbench_setupaie: testbench/testbench_setupaie.cpp mm2s.cpp
 	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
-	    testbench/testbench_setupaie.cpp setup_aie.cpp \
+	    testbench/testbench_setupaie.cpp mm2s.cpp \
 	    -o testbench/$@
 
 run_testbench_setupaie: testbench_setupaie
 	cd testbench && ./testbench_setupaie
 
-testbench_e2e: testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp
+testbench_e2e: testbench/testbench_e2e.cpp mm2s.cpp s2mm.cpp
 	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
-	    testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp \
+	    testbench/testbench_e2e.cpp mm2s.cpp s2mm.cpp \
 	    -o testbench/$@
 
 run_testbench_e2e: testbench_e2e

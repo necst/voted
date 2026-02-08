@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mm2s_hw_emu" dir="">
+  <FileSets>
+    <FileSet Name="kernel_mm2s" Type="DesignSrcs">
+      <File Path="/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp"/>
+      <Config/>
+    </FileSet>
+  </FileSets>
+  <Runs/>
+</project>

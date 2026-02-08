@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="mm2s" LaunchDir="/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s" FlowId="Build_IP" FromStepId="vitis_hls" ToStepId="vitis_hls"/>
+</Runs>
+

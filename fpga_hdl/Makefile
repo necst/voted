@@ -68,12 +68,21 @@ $(BUILD)/xsim.ok: $(BUILD)/xelab.ok
 # ------------------------------------------------------------
 
 KERNEL_NAME ?= krnl_and
-PART        ?= xcu50-fsvh2104-2-e
+PART=xcvc1902-vsvd1760-2MP-e-S
 KERNEL_XML  ?= krnl_and.xml
 
 XO     := $(BUILD)/$(KERNEL_NAME).xo
 IP_DIR := $(BUILD)/$(KERNEL_NAME)_ip
-PACK_TCL := scripts/pack_xo.tcl
+
+KERNEL_IF ?= axilite   # axilite | axis
+
+PACK_TCL_AXILITE := scripts/pack_xo.tcl
+PACK_TCL_AXIS    := scripts/pack_xo_axis.tcl
+
+PACK_TCL := $(PACK_TCL_AXILITE)
+ifeq ($(KERNEL_IF),axis)
+PACK_TCL := $(PACK_TCL_AXIS)
+endif
 
 .PHONY: xo
 xo: $(XO)
@@ -83,6 +92,8 @@ $(XO): $(PACK_TCL) $(KERNEL_XML) | $(BUILD)
 	vivado -mode batch -nolog -nojournal -notrace \
 	  -source $(PACK_TCL) \
 	  -tclargs "$(PART)" "$(KERNEL_NAME)" "$(XO)" "$(IP_DIR)" "$(KERNEL_XML)" $(RTL)
+
+
 # Remove all generated files.
 clean:
 	rm -rf \

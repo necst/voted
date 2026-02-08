@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="s2mm_hw_emu" dir="">
+  <FileSets>
+    <FileSet Name="kernel_s2mm" Type="DesignSrcs">
+      <File Path="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp"/>
+      <Config/>
+    </FileSet>
+  </FileSets>
+  <Runs/>
+</project>

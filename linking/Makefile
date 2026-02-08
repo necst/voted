@@ -41,9 +41,19 @@ TARGET := hw
 # Use --optimize 3 to enable post-route optimizations. This may improve the bitstream but SIGNIFICANTLY increase compilation time
 XOCCLFLAGS := --kernel_frequency 200 --platform $(PLATFORM) -t $(TARGET)  -s -g
 
-AIE_OBJ := ../aie/libadf.a
-XOS     := ../fpga/setup_aie_$(TARGET).xo 
-XOS     += ../fpga/sink_from_aie_$(TARGET).xo 
+# Enable/disable AI Engine integration
+USE_AIE ?= 0
+
+AIE_OBJ ?= ../aie/libadf.a
+XOS     := ../fpga/mm2s_$(TARGET).xo
+XOS     += ../fpga_hdl/build/krnl_vadd_stream.xo
+XOS     += ../fpga/s2mm_$(TARGET).xo
+
+# Inputs to v++ depend on whether AIE is enabled
+INPUTS := $(XOS)
+ifeq ($(USE_AIE),1)
+INPUTS += $(AIE_OBJ)
+endif
 XSA_OBJ := overlay_$(TARGET).xsa
 XCLBIN  := overlay_$(TARGET).xclbin
 
@@ -51,14 +61,12 @@ XCLBIN  := overlay_$(TARGET).xclbin
 
 all: $(XCLBIN)
 
-# The XSA_OBJ dependency is not required, if the target platform is a non Versal alveo accelerator card.
-$(XCLBIN): $(XSA_OBJ) $(AIE_OBJ)
+$(XCLBIN): $(XSA_OBJ) $(if $(filter 1,$(USE_AIE)),$(AIE_OBJ),)
 	v++ -p -t $(TARGET) -f $(PLATFORM) $^ -o $@ --package.boot_mode=ospi
 
-# This command is not required, if the target platform is a non Versal alveo accelerator card.
-$(XSA_OBJ): $(XOS) $(AIE_OBJ)
+$(XSA_OBJ): $(INPUTS)
 	v++ -l $(XOCCFLAGS) $(XOCCLFLAGS) --config xclbin_overlay.cfg -o $@ $^
-
+	
 clean:
 	$(RM) -r _x .Xil .ipcache *.ltx *.log *.sh *.jou *.info *.xclbin *.xo.* *.str *.xsa *.cdo.bin *bif *BIN *.package_summary *.link_summary *.txt *.bin && rm -rf cfg emulation_data sim
 	

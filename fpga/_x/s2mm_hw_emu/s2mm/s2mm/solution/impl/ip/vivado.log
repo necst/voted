@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.2 (64-bit)
+# SW Build 3954437 on Wed Aug  9 23:05:19 MDT 2023
+# IP Build 3954312 on Thu Aug 10 04:10:56 MDT 2023
+# SharedData Build 3952698 on Tue Aug 08 21:36:00 MDT 2023
+# Start of session at: Sun Feb  8 07:40:09 2026
+# Process ID: 3491831
+# Current directory: /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip
+# Command line: vivado -notrace -mode batch -source run_ippack.tcl
+# Log file: /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip/vivado.log
+# Journal file: /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip/vivado.jou
+# Running On: fpga-santa-vm-1, OS: Linux, CPU Frequency: 2199.996 MHz, CPU Physical cores: 32, Host memory: 135052 MB
+#-----------------------------------------------------------
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2140.348 ; gain = 131.023 ; free physical = 20475 ; free virtual = 108632
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/xilinx/Vivado/2023.1/data/ip'.
+Running package_xo -xo_path /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/export.xo -kernel_name s2mm -kernel_xml /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip/../kernel/kernel.xml -kernel_files /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp -ip_directory /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip/ip_unzip_dir -design_xml /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/.autopilot/db/s2mm.design.xml -debug_directory /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/.debug -hls_directory /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip/hls_files
+INFO: [Common 17-206] Exiting Vivado at Sun Feb  8 07:40:27 2026...

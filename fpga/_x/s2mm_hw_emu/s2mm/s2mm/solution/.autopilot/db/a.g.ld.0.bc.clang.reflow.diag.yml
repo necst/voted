@@ -1,0 +1,114 @@
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                   Line: 43, Column: 19 }
+Function:        s2mm
+Args:            
+  - String:          'Sequential '
+  - Direction:       write
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        output2seq
+  - ArrayName:       output
+  - String:          ' '
+  - BundleName:      gmem1
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_43_1
+  - String:          ' '
+  - LoopLoc:         '/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43:19'
+  - String:          ' '
+  - Function:        s2mm
+    DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                       Line: 33, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      store
+    DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                       Line: 45, Column: 15 }
+  - OrigDirection:   write
+  - OrigID:          for.inc.store.6
+...
+--- !Missed
+Pass:            reflow-burst-widen
+Name:            BadAccessLen
+DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                   Line: 43, Column: 19 }
+Function:        s2mm
+Args:            
+  - String:          Sequential access length is not divisible by 2
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                       Line: 43, Column: 19 }
+  - OrigDirection:   write
+  - OrigID:          output2seq
+  - ArrayName:       output
+  - String:          ' '
+  - BundleName:      gmem1
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_43_1
+  - String:          ' '
+  - LoopLoc:         '/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43:19'
+  - String:          ' '
+  - Function:        s2mm
+    DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                       Line: 33, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                   Line: 43, Column: 19 }
+Function:        s2mm
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '32'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem1
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_43_1
+  - String:          ' '
+  - LoopLoc:         '/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43:19'
+  - String:          ' '
+  - Function:        s2mm
+    DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                       Line: 33, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp, 
+                   Line: 43, Column: 19 }
+Function:        s2mm
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '32'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_43_1
+  - String:          '''('
+  - LoopLoc:         '/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43:19'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem1
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...

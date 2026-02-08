@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root versionMajor="1" versionMinor="5">
+  <kernel name="krnl_vadd_stream" language="rtl" vlnv="user.org:user:krnl_vadd_stream:1.0">
+    <ports>
+      <port name="ap_clk"   mode="input" type="clock"/>
+      <port name="ap_rst_n" mode="input" type="reset"/>
+
+      <port name="s_axis_a"   mode="slave"  type="axis"/>
+      <port name="s_axis_b"   mode="slave"  type="axis"/>
+      <port name="m_axis_out" mode="master" type="axis"/>
+    </ports>
+
+    <!-- Stream-only kernel: no AXI-Lite control args -->
+    <args/>
+  </kernel>
+</root>

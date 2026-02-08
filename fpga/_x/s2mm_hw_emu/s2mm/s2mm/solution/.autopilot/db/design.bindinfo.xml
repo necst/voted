@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BindInfo>
+	<BindNode BINDTYPE="op" DISPLAY="bind_op icmp" ID="" IMPL="auto" LATENCY="0" OPTYPE="icmp" PRAGMA="" RTLNAME="icmp_ln43_fu_144_p2" SOURCE="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43" VARIABLE="icmp_ln43" MODULE="s2mm" LOOP="" BUNDLEDNAME="" DSP="0" BRAM="0" URAM="0"/>
+	<BindNode BINDTYPE="op" DISPLAY="bind_op select" ID="" IMPL="auto_sel" LATENCY="0" OPTYPE="select" PRAGMA="" RTLNAME="empty_fu_170_p3" SOURCE="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43" VARIABLE="empty" MODULE="s2mm" LOOP="" BUNDLEDNAME="" DSP="0" BRAM="0" URAM="0"/>
+	<BindNode BINDTYPE="op" DISPLAY="bind_op icmp" ID="" IMPL="auto" LATENCY="0" OPTYPE="icmp" PRAGMA="" RTLNAME="icmp_ln43_1_fu_194_p2" SOURCE="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43" VARIABLE="icmp_ln43_1" MODULE="s2mm" LOOP="VITIS_LOOP_43_1" BUNDLEDNAME="" DSP="0" BRAM="0" URAM="0"/>
+	<BindNode BINDTYPE="op" DISPLAY="bind_op add" ID="" IMPL="fabric" LATENCY="0" OPTYPE="add" PRAGMA="" RTLNAME="add_ln43_fu_199_p2" SOURCE="" VARIABLE="add_ln43" MODULE="s2mm" LOOP="VITIS_LOOP_43_1" BUNDLEDNAME="" DSP="0" BRAM="0" URAM="0"/>
+	<BindNode BINDTYPE="op" DISPLAY="bind_op icmp" ID="" IMPL="auto" LATENCY="0" OPTYPE="icmp" PRAGMA="" RTLNAME="icmp_ln43_2_fu_209_p2" SOURCE="/home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43" VARIABLE="icmp_ln43_2" MODULE="s2mm" LOOP="VITIS_LOOP_43_1" BUNDLEDNAME="" DSP="0" BRAM="0" URAM="0"/>
+	<BindNode BINDTYPE="adapter" DISPLAY="bind_adapter axilite" ID="" IMPL="" LATENCY="" OPTYPE="" PRAGMA="yes" RTLNAME="control_s_axi_U" SOURCE="" VARIABLE="" MODULE="s2mm" LOOP="" BUNDLEDNAME="control" DSP="0" BRAM="0" URAM="0"/>
+	<BindNode BINDTYPE="adapter" DISPLAY="bind_adapter axi_master" ID="" IMPL="" LATENCY="" OPTYPE="" PRAGMA="yes" RTLNAME="gmem1_m_axi_U" SOURCE="" VARIABLE="" MODULE="s2mm" LOOP="" BUNDLEDNAME="gmem1" DSP="0" BRAM="2" URAM="0"/>
+</BindInfo>

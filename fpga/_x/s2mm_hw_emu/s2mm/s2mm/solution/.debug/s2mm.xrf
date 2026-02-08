@@ -1,0 +1,33 @@
+Begin Function 's2mm'
+
+RTL state condition: (1'b1 == ap_CS_fsm_pp0_stage0)
+# ST_2
+local first_iter_0 <> <integer> <Phi> 'phi' <>
+reg: first_iter_0_reg_127[0:0] lv
+
+local icmp_ln43_1 <icmp_43> <integer> <Comparator> 'icmp' </home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43>
+icmp_ln43_1 /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43
+reg: icmp_ln43_1_reg_243[0:0] lv
+
+local x <read_44> <integer> <> 'read' </home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:44>
+x /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:44
+reg: x_reg_247[31:0] lv
+
+local icmp_ln43_2 <icmp_43> <integer> <Comparator> 'icmp' </home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43>
+icmp_ln43_2 /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43
+reg: icmp_ln43_2_reg_252[0:0] lv
+
+
+RTL state condition: (1'b1 == ap_CS_fsm_state1)
+# ST_1
+local gmem1_addr <getelementptr_43> <integer> <> 'getelementptr' </home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43>
+gmem1_addr /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43
+reg: gmem1_addr_reg_232[63:0] lv
+
+local zext_ln43 <zext_43> <integer> <> 'zext' </home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43>
+zext_ln43 /home/gsorrentino/projects/voted_hdl/voted/fpga/s2mm.cpp:43
+reg: zext_ln43_reg_238[31:0] lv
+
+
+End Function 's2mm'
+

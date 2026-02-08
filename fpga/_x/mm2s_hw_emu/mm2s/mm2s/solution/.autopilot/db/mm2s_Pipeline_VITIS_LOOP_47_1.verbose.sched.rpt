@@ -1,0 +1,157 @@
+
+
+================================================================
+== Vitis HLS Report for 'mm2s_Pipeline_VITIS_LOOP_47_1'
+================================================================
+* Date:           Sun Feb  8 07:38:05 2026
+
+* Version:        2023.1.2 (Build 3928128 on Aug  8 2023)
+* Project:        mm2s
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: versalaicore
+* Target device:  xcvc1902-vsvd1760-2MP-e-S
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.433 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+-----------+----------+-----------+-----+-----------+---------+
+    |   Latency (cycles)  |  Latency (absolute)  |     Interval    | Pipeline|
+    |   min   |    max    |    min   |    max    | min |    max    |   Type  |
+    +---------+-----------+----------+-----------+-----+-----------+---------+
+    |        3|  536870914|  9.999 ns|  1.789 sec|    3|  536870914|       no|
+    +---------+-----------+----------+-----------+-----+-----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+-----------+----------+-----------+-----------+---------------+----------+
+        |                   |   Latency (cycles)  | Iteration|  Initiation Interval  |      Trip     |          |
+        |     Loop Name     |   min   |    max    |  Latency |  achieved |   target  |     Count     | Pipelined|
+        +-------------------+---------+-----------+----------+-----------+-----------+---------------+----------+
+        |- VITIS_LOOP_47_1  |        1|  536870912|         2|          1|          1|  0 ~ 536870911|       yes|
+        +-------------------+---------+-----------+----------+-----------+-----------+---------------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 2, States = { 1 2 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.35>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%i = alloca i32 1"   --->   Operation 5 'alloca' 'i' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%div_read = read i31 @_ssdm_op_Read.ap_auto.i31, i31 %div"   --->   Operation 6 'read' 'div_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%sext_ln47_read = read i60 @_ssdm_op_Read.ap_auto.i60, i60 %sext_ln47"   --->   Operation 7 'read' 'sext_ln47_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%sext_ln47_1_read = read i60 @_ssdm_op_Read.ap_auto.i60, i60 %sext_ln47_1"   --->   Operation 8 'read' 'sext_ln47_1_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%sext_ln47_cast = sext i60 %sext_ln47_read"   --->   Operation 9 'sext' 'sext_ln47_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%sext_ln47_1_cast = sext i60 %sext_ln47_1_read"   --->   Operation 10 'sext' 'sext_ln47_1_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %outB, void @empty_8, i32 0, i32 0, void @empty_10, i32 0, i32 0, void @empty_3, void @empty_3, void @empty_3, i32 0, i32 0, i32 0, i32 0, void @empty_3, void @empty_3, i32 4294967295, i32 0"   --->   Operation 11 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %outA, void @empty_8, i32 0, i32 0, void @empty_10, i32 0, i32 0, void @empty_3, void @empty_3, void @empty_3, i32 0, i32 0, i32 0, i32 0, void @empty_3, void @empty_3, i32 4294967295, i32 0"   --->   Operation 12 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %gmem2, void @empty_2, i32 0, i32 0, void @empty_3, i32 64, i32 100, void @empty_9, void @empty_5, void @empty_3, i32 16, i32 16, i32 16, i32 16, void @empty_3, void @empty_3, i32 4294967295, i32 0"   --->   Operation 13 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i128 %gmem1, void @empty_2, i32 0, i32 0, void @empty_3, i32 64, i32 100, void @empty_4, void @empty_5, void @empty_3, i32 16, i32 16, i32 16, i32 16, void @empty_3, void @empty_3, i32 4294967295, i32 0"   --->   Operation 14 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.46ns)   --->   "%store_ln0 = store i30 0, i30 %i"   --->   Operation 15 'store' 'store_ln0' <Predicate = true> <Delay = 0.46>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%br_ln0 = br void %for.inc"   --->   Operation 16 'br' 'br_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%i_load = load i30 %i"   --->   Operation 17 'load' 'i_load' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.89ns)   --->   "%add_ln47 = add i30 %i_load, i30 1"   --->   Operation 18 'add' 'add_ln47' <Predicate = true> <Delay = 0.89> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.89> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%i_cast = zext i30 %i_load"   --->   Operation 19 'zext' 'i_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.89ns)   --->   "%icmp_ln47 = icmp_slt  i31 %i_cast, i31 %div_read" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 20 'icmp' 'icmp_ln47' <Predicate = true> <Delay = 0.89> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.89> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%br_ln47 = br i1 %icmp_ln47, void %for.end.loopexit.exitStub, void %new.body.for.inc" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 21 'br' 'br_ln47' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.46ns)   --->   "%store_ln47 = store i30 %add_ln47, i30 %i" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 22 'store' 'store_ln47' <Predicate = (icmp_ln47)> <Delay = 0.46>
+
+State 2 <SV = 1> <Delay = 2.43>
+ST_2 : Operation 23 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i128 %gmem2"   --->   Operation 23 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i128 %gmem1"   --->   Operation 24 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%gmem2_addr = getelementptr i128 %gmem2, i64 %sext_ln47_1_cast" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 25 'getelementptr' 'gmem2_addr' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%gmem1_addr = getelementptr i128 %gmem1, i64 %sext_ln47_cast" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 26 'getelementptr' 'gmem1_addr' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.00ns)   --->   "%specpipeline_ln0 = specpipeline void @_ssdm_op_SpecPipeline, i32 4294967295, i32 0, i32 1, i32 0, void @p_str"   --->   Operation 27 'specpipeline' 'specpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 28 [1/1] (0.00ns)   --->   "%speclooptripcount_ln47 = speclooptripcount void @_ssdm_op_SpecLoopTripCount, i64 0, i64 536870911, i64 268435455" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 28 'speclooptripcount' 'speclooptripcount_ln47' <Predicate = (icmp_ln47)> <Delay = 0.00>
+ST_2 : Operation 29 [1/1] (0.00ns)   --->   "%specloopname_ln47 = specloopname void @_ssdm_op_SpecLoopName, void @empty_12" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 29 'specloopname' 'specloopname_ln47' <Predicate = (icmp_ln47)> <Delay = 0.00>
+ST_2 : Operation 30 [1/1] (2.43ns)   --->   "%gmem1_addr_read = read i128 @_ssdm_op_Read.m_axi.p1i128, i128 %gmem1_addr" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:48]   --->   Operation 30 'read' 'gmem1_addr_read' <Predicate = (icmp_ln47)> <Delay = 2.43> <CoreInst = "m_axi">   --->   Core 125 'm_axi' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_2 : Operation 31 [1/1] (2.43ns)   --->   "%gmem2_addr_read = read i128 @_ssdm_op_Read.m_axi.p1i128, i128 %gmem2_addr" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:49]   --->   Operation 31 'read' 'gmem2_addr_read' <Predicate = (icmp_ln47)> <Delay = 2.43> <CoreInst = "m_axi">   --->   Core 125 'm_axi' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_2 : Operation 32 [1/1] (0.00ns)   --->   "%write_ln50 = write void @_ssdm_op_Write.axis.volatile.i128P128A, i128 %outA, i128 %gmem1_addr_read" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:50]   --->   Operation 32 'write' 'write_ln50' <Predicate = (icmp_ln47)> <Delay = 0.00> <CoreInst = "axis">   --->   Core 127 'axis' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_2 : Operation 33 [1/1] (0.00ns)   --->   "%write_ln51 = write void @_ssdm_op_Write.axis.volatile.i128P128A, i128 %outB, i128 %gmem2_addr_read" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:51]   --->   Operation 33 'write' 'write_ln51' <Predicate = (icmp_ln47)> <Delay = 0.00> <CoreInst = "axis">   --->   Core 127 'axis' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_2 : Operation 34 [1/1] (0.00ns)   --->   "%br_ln47 = br void %for.inc" [/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47]   --->   Operation 34 'br' 'br_ln47' <Predicate = (icmp_ln47)> <Delay = 0.00>
+ST_2 : Operation 35 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 35 'ret' 'ret_ln0' <Predicate = (!icmp_ln47)> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.333ns, clock uncertainty: 0.900ns.
+
+ <State 1>: 1.353ns
+The critical path consists of the following:
+	'alloca' operation ('i') [8]  (0.000 ns)
+	'load' operation ('i_load') on local variable 'i' [21]  (0.000 ns)
+	'add' operation ('add_ln47') [22]  (0.890 ns)
+	'store' operation ('store_ln47', /home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47) of variable 'add_ln47' on local variable 'i' [38]  (0.462 ns)
+	blocking operation 0.0015 ns on control path)
+
+ <State 2>: 2.433ns
+The critical path consists of the following:
+	'getelementptr' operation ('gmem1_addr', /home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:47) [27]  (0.000 ns)
+	bus read operation ('gmem1_addr_read', /home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:48) on port 'gmem1' (/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:48) [34]  (2.433 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

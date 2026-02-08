@@ -1,0 +1,28 @@
+/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s/mm2s.tcl:27:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=top_XLX_SEP_ PragmaContext=directive_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=name=mm2s_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLSDIRECTIVE TOP name=mm2s
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:34:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=axis port = outA_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface axis port = outA
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:35:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=axis port = outB_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface axis port = outB
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:36:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=m_axi port = inputA depth = 100 offset = slave bundle = gmem1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE m_axi port = inputA depth = 100 offset = slave bundle = gmem1
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:38:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=m_axi port = inputB depth = 100 offset = slave bundle = gmem2_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE m_axi port = inputB depth = 100 offset = slave bundle = gmem2
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:40:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=s_axilite port = inputA bundle = control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port = inputA bundle = control
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:41:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=s_axilite port = inputB bundle = control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port = inputB bundle = control
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:43:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=s_axilite port = size bundle = control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port = size bundle = control
+        ^
+/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp:44:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=mm2s_XLX_SEP_ PragmaOptions=s_axilite port = return bundle = control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS interface s_axilite port = return bundle = control
+        ^
+9 warnings generated.

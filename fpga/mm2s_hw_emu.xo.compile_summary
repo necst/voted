@@ -1,0 +1,237 @@
+<ENTRY>
+{
+ "thisFile": "/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s_hw_emu.xo.compile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Sun Feb  8 07:37:13 2026",
+ "timestampMillis": "1770536233285",
+ "buildStep": {
+  "cmdId": "57e9cecd-1d71-489f-9d1f-c13020963b69",
+  "name": "v++",
+  "logFile": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s_hw_emu.steps.log",
+  "commandLine": "/home/xilinx/Vitis/2023.1/bin/unwrapped/lnx64.o/v++  --vivado.prop \"run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" --platform xilinx_vck5000_gen4x8_qdma_2_202220_1 -t hw_emu -s -g --kernel mm2s -c -o mm2s_hw_emu.xo mm2s.cpp ",
+  "args": [
+   "--platform",
+   "xilinx_vck5000_gen4x8_qdma_2_202220_1",
+   "-t",
+   "hw_emu",
+   "-s",
+   "-g",
+   "--kernel",
+   "mm2s",
+   "-c",
+   "-o",
+   "mm2s_hw_emu.xo",
+   "mm2s.cpp"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gsorrentino/projects/voted_hdl/voted/fpga"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Feb  8 07:37:13 2026",
+ "timestampMillis": "1770536233285",
+ "status": {
+  "cmdId": "57e9cecd-1d71-489f-9d1f-c13020963b69",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Sun Feb  8 07:37:22 2026",
+ "timestampMillis": "1770536242657",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_vck5000_gen4x8_qdma_2_202220_1.xpfm",
+  "hardwareDsa": "",
+  "platformDirectory": "/opt/xilinx/platforms/xilinx_vck5000_gen4x8_qdma_2_202220_1",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_COMPILE",
+  "target": "TT_HW_EMU",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "mm2s",
+     "file": "/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s_hw_emu.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/gsorrentino/projects/voted_hdl/voted/fpga/mm2s.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "Vitis V++ Compiler Release 2023.1.2. SW Build 3928128 on 2023-08-08-14:42:48"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Sun Feb  8 07:37:22 2026",
+ "timestampMillis": "1770536242663",
+ "buildStep": {
+  "cmdId": "c6dfb1f8-8ced-4700-8497-885b21b955ff",
+  "name": "vitis_hls",
+  "logFile": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s/vitis_hls.log",
+  "commandLine": "vitis_hls -f /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s/mm2s.tcl -messageDb vitis_hls.pb",
+  "args": [
+   "vitis_hls",
+   "-f",
+   "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s/mm2s.tcl",
+   "-messageDb",
+   "vitis_hls.pb"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gsorrentino/projects/voted_hdl/voted/fpga"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Feb  8 07:37:22 2026",
+ "timestampMillis": "1770536242663",
+ "status": {
+  "cmdId": "c6dfb1f8-8ced-4700-8497-885b21b955ff",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326496",
+ "status": {
+  "cmdId": "c6dfb1f8-8ced-4700-8497-885b21b955ff",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326523",
+ "report": {
+  "path": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s/mm2s/solution/.autopilot/db/mm2s.design.xml",
+  "name": "mm2s",
+  "fileType": "XML",
+  "reportType": "KERNEL_HLS_REPORT",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326524",
+ "report": {
+  "path": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s/mm2s/solution/.autopilot/db/.message_syn.xml",
+  "name": "mm2s",
+  "fileType": "XML",
+  "reportType": "KERNEL_HLS_DRC_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326525",
+ "report": {
+  "path": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/reports/mm2s_hw_emu/hls_reports/mm2s_csynth.rpt",
+  "name": "mm2s",
+  "fileType": "TEXT",
+  "reportType": "KERNEL_HLS_CSYNTH",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326526",
+ "report": {
+  "path": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/mm2s_hw_emu/mm2s/mm2s/solution/syn/report/mm2s_csynth.xml",
+  "name": "mm2s",
+  "fileType": "XML",
+  "reportType": "KERNEL_HLS_CSYNTH",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326536",
+ "report": {
+  "path": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/reports/mm2s_hw_emu/system_estimate_mm2s_hw_emu.xtxt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_SYSTEM_ESTIMATE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326645",
+ "status": {
+  "cmdId": "57e9cecd-1d71-489f-9d1f-c13020963b69",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326802",
+ "report": {
+  "path": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/reports/mm2s_hw_emu/v++_compile_mm2s_hw_emu_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Sun Feb  8 07:38:46 2026",
+ "timestampMillis": "1770536326803",
+ "report": {
+  "path": "/home/gsorrentino/projects/voted_hdl/voted/fpga/_x/v++_compile_mm2s_hw_emu_guidance.pb3",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.2 (64-bit)
+# SW Build 3954437 on Wed Aug  9 23:05:19 MDT 2023
+# IP Build 3954312 on Thu Aug 10 04:10:56 MDT 2023
+# SharedData Build 3952698 on Tue Aug 08 21:36:00 MDT 2023
+# Start of session at: Sun Feb  8 07:40:09 2026
+# Process ID: 3491831
+# Current directory: /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip
+# Command line: vivado -notrace -mode batch -source run_ippack.tcl
+# Log file: /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip/vivado.log
+# Journal file: /home/gsorrentino/projects/voted_hdl/voted/fpga/_x/s2mm_hw_emu/s2mm/s2mm/solution/impl/ip/vivado.jou
+# Running On: fpga-santa-vm-1, OS: Linux, CPU Frequency: 2199.996 MHz, CPU Physical cores: 32, Host memory: 135052 MB
+#-----------------------------------------------------------
+source run_ippack.tcl -notrace
