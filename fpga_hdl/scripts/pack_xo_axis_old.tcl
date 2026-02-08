@@ -1,47 +1,14 @@
-# scripts/pack_xo_axis_generic.tcl
-#
-# Generic Vivado -> Vitis XO packager for AXI4-Stream RTL kernels.
-#
+# scripts/pack_xo_axis.tcl
 # Args:
-#   <part> <kernel_name> <xo_path> <ip_dir> <freq_hz> <rtl_files...>
-#
-# NOTE:
-# - We intentionally do NOT set FREQ_HZ to avoid hw_emu BD validation failures
-#   when the platform clock differs (e.g. ~300MHz vs 200MHz).
-#
-# Assumptions:
-# - Kernel has ports ap_clk, ap_rst_n
-# - AXIS ports follow naming <ifname>_tvalid/_tready/_tdata/_tlast... so Vivado can infer busifs.
-# - Uses ap_ctrl_none (stream-only kernel)
+#   <part> <kernel_name> <xo_path> <ip_dir> <kernel_xml> <rtl_files...>
 
 set part       [lindex $argv 0]
 set kname      [lindex $argv 1]
 set xo_path    [lindex $argv 2]
 set ip_dir     [lindex $argv 3]
-set rtl_files  [lrange $argv 4 end]
+set rtl_files  [lrange $argv 5 end]
 
-puts "PART=$part"
-puts "KERNEL=$kname"
-puts "XO=$xo_path"
-puts "IP_DIR=$ip_dir"
-puts "RTL=$rtl_files"
-
-# -----------------------------------------------------------------------------
-# Helpers
-# -----------------------------------------------------------------------------
-proc die {msg code} {
-  puts "ERROR: $msg"
-  exit $code
-}
-
-# Set or create a bus parameter on a bus interface (IP-XACT)
-proc set_bus_param {bif pname pvalue} {
-  set p [ipx::get_bus_parameters -of_objects $bif $pname]
-  if {[llength $p] == 0} {
-    set p [ipx::add_bus_parameter $pname $bif]
-  }
-  set_property value $pvalue $p
-}
+puts "PART=$part KERNEL=$kname XO=$xo_path IP_DIR=$ip_dir RTL=$rtl_files"
 
 # -----------------------------------------------------------------------------
 # Create an out-of-context project and synthesize the RTL top
@@ -49,20 +16,17 @@ proc set_bus_param {bif pname pvalue} {
 create_project -force ${kname}_pack _vivado_${kname} -part $part
 set_property target_language Verilog [current_project]
 
-if {[llength $rtl_files] == 0} {
-  die "No RTL files provided." 10
-}
-
 add_files -norecurse $rtl_files
 update_compile_order -fileset sources_1
 set_property top $kname [current_fileset]
 
 if {[catch {synth_design -top $kname -part $part -mode out_of_context -flatten_hierarchy none} synth_msg]} {
+  puts "ERROR: synthesis failed for $kname"
   puts $synth_msg
-  die "synth_design failed for top '$kname'." 2
+  exit 2
 }
 
-# Minimal required ports for Vitis RTL kernel packaging (stream-only)
+# Minimal required ports for stream-only Vitis RTL kernel
 set required_ports [list ap_clk ap_rst_n]
 set missing {}
 foreach p $required_ports {
@@ -71,9 +35,9 @@ foreach p $required_ports {
   }
 }
 if {[llength $missing] != 0} {
-  puts "Missing required ports:"
+  puts "ERROR: Missing required ports for stream-only kernel packaging:"
   foreach m $missing { puts "  - $m" }
-  die "Kernel top must provide ap_clk and ap_rst_n." 3
+  exit 3
 }
 
 close_design
@@ -91,54 +55,65 @@ set_property sdx_kernel true     $core
 set_property sdx_kernel_type rtl $core
 
 # -----------------------------------------------------------------------------
-# Find ap_clk bus interface (clock) and associate all inferred AXIS busifs to it
+# Associate AXIS bus interfaces to ap_clk and set clock frequency
+# (Vivado 2023.1: do it as BUS PARAMETERS on the ap_clk BUS INTERFACE)
 # -----------------------------------------------------------------------------
+set busifs_expected [list s_axis_a s_axis_b m_axis_out]
+
+# Get the ap_clk bus interface (should exist: xilinx.com:signal:clock:1.0)
 set clk_bif [ipx::get_bus_interfaces ap_clk -of_objects $core]
 if {[llength $clk_bif] == 0} {
-  die "Could not find ipx bus interface 'ap_clk' (clock) in packaged core." 4
+  puts "ERROR: Could not find ipx bus interface 'ap_clk' (clock) in packaged core."
+  exit 4
 }
 
-# Auto-detect AXI4-Stream bus interfaces (xilinx.com:interface:axis:1.0)
+# Build list of busifs that actually exist
 set assoc_list {}
-foreach bif [ipx::get_bus_interfaces -of_objects $core] {
-  set n  [get_property name $bif]
-
-  # skip clock/reset signal interfaces
-  if {$n eq "ap_clk" || $n eq "ap_rst_n"} { continue }
-
-  # detect AXIS by bus_type_vlnv
-  set bt [get_property bus_type_vlnv $bif]
-  if {[string match "*:interface:axis:*" $bt]} {
-    lappend assoc_list $n
+foreach b $busifs_expected {
+  set bobj [ipx::get_bus_interfaces $b -of_objects $core]
+  if {[llength $bobj] != 0} {
+    lappend assoc_list $b
+  } else {
+    puts "WARNING: Bus interface '$b' not found in IP-XACT; not associating to ap_clk."
   }
 }
 
-if {[llength $assoc_list] == 0} {
-  puts "WARNING: No AXI4-Stream bus interfaces detected. Nothing to associate to ap_clk."
-  puts "         If you expected streams, verify your port naming: <ifname>_tvalid/_tready/_tdata/_tlast..."
-} else {
-  set assoc_str [join $assoc_list ":"]
-  set_bus_param $clk_bif "ASSOCIATED_BUSIF" $assoc_str
-  puts "INFO: Detected AXIS busifs: $assoc_list"
-  puts "INFO: Set ap_clk bus parameter ASSOCIATED_BUSIF = $assoc_str"
+# Helper: set or create a bus parameter on a bus interface
+proc set_bus_param {bif pname pvalue} {
+  set p [ipx::get_bus_parameters -of_objects $bif $pname]
+  if {[llength $p] == 0} {
+    set p [ipx::add_bus_parameter $pname $bif]
+  }
+  set_property value $pvalue $p
 }
 
-# IMPORTANT: Do NOT set FREQ_HZ here (avoids VPL 41-237/41-238 mismatches in hw_emu)
+if {[llength $assoc_list] != 0} {
+  set assoc_str [join $assoc_list ":"]
+  set_bus_param $clk_bif "ASSOCIATED_BUSIF" $assoc_str
+  puts "INFO: Set ap_clk bus parameter ASSOCIATED_BUSIF = $assoc_str"
+} else {
+  puts "WARNING: No AXIS bus interfaces found to associate with ap_clk."
+}
 
+# Set clock frequency on clock bus interface (200 MHz)
+set_bus_param $clk_bif "FREQ_HZ" "200000000"
+puts "INFO: Set ap_clk bus parameter FREQ_HZ = 200000000"
 # -----------------------------------------------------------------------------
 # Archive sources, integrity check, save core
 # -----------------------------------------------------------------------------
 ipx::update_source_project_archive -component $core
 
 if {[catch {ipx::check_integrity $core} integ_msg]} {
+  puts "ERROR: ipx::check_integrity failed."
   puts $integ_msg
-  die "ipx::check_integrity failed." 5
+  exit 5
 }
 
 ipx::save_core $core
 
 # -----------------------------------------------------------------------------
 # Create XO
+# NOTE: Do NOT pass -kernel_xml here, to avoid forcing language="rtl" in the XO.
 # -----------------------------------------------------------------------------
 package_xo -force \
   -xo_path $xo_path \

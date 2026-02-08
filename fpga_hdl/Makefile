@@ -69,7 +69,6 @@ $(BUILD)/xsim.ok: $(BUILD)/xelab.ok
 
 KERNEL_NAME ?= krnl_and
 PART=xcvc1902-vsvd1760-2MP-e-S
-KERNEL_XML  ?= krnl_and.xml
 
 XO     := $(BUILD)/$(KERNEL_NAME).xo
 IP_DIR := $(BUILD)/$(KERNEL_NAME)_ip
@@ -87,11 +86,11 @@ endif
 .PHONY: xo
 xo: $(XO)
 
-$(XO): $(PACK_TCL) $(KERNEL_XML) | $(BUILD)
+$(XO): $(PACK_TCL) | $(BUILD)
 	@mkdir -p $(IP_DIR)
 	vivado -mode batch -nolog -nojournal -notrace \
 	  -source $(PACK_TCL) \
-	  -tclargs "$(PART)" "$(KERNEL_NAME)" "$(XO)" "$(IP_DIR)" "$(KERNEL_XML)" $(RTL)
+	  -tclargs "$(PART)" "$(KERNEL_NAME)" "$(XO)" "$(IP_DIR)" $(RTL)
 
 
 # Remove all generated files.
