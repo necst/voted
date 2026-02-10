@@ -1,4 +1,4 @@
-FPGA-HDL – RTL Simulation and RTL Kernel Packaging
+## FPGA-HDL – RTL Simulation and RTL Kernel Packaging
 
 Purpose
 -------
