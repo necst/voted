@@ -64,13 +64,13 @@ testbench_s2mm: testbench/testbench_s2mm.cpp s2mm.cpp
 run_testbench_s2mm: testbench_s2mm
 	cd testbench && ./testbench_s2mm 
 
-testbench_setupaie: testbench/testbench_setupaie.cpp mm2s.cpp
+testbench_mm2s: testbench/testbench_mm2s.cpp mm2s.cpp
 	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
-	    testbench/testbench_setupaie.cpp mm2s.cpp \
+	    testbench/testbench_mm2s.cpp mm2s.cpp \
 	    -o testbench/$@
 
-run_testbench_setupaie: testbench_setupaie
-	cd testbench && ./testbench_setupaie
+run_testbench_mm2s: testbench_mm2s
+	cd testbench && ./testbench_mm2s
 
 testbench_e2e: testbench/testbench_e2e.cpp mm2s.cpp s2mm.cpp
 	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \

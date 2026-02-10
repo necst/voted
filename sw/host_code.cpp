@@ -22,6 +22,7 @@ std::ostream &bold_off(std::ostream &os);
 int checkResult(int32_t *inputA, int32_t *inputB, int32_t *output, int size) {
   for (int i = 0; i < size; i++) {
     int val = inputA[i] + inputB[i];
+    printf("output[%d] = %d\n", i, output[i]);
     if (val != output[i]) {
       std::cout << "Error at index " << i << ": " << val << " != " << output[i]
                 << std::endl;
