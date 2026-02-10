@@ -22,7 +22,7 @@ Build
 From this directory, run:
 
 ```bash
-make all TARGET=<hw|hw_emu>
+make all TARGET=<hw|hw_emu> USE_AIE=<0|1>
 ```
 
 The TARGET variable selects the build mode:
