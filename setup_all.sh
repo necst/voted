@@ -7,7 +7,7 @@ VITIS=/home/xilinx/2025.1/Vitis/settings64.sh
 XRT=/opt/xrt/2025.1/setup.sh
 PETALINUX=/opt/petalinux/2025.1/environment-setup-cortexa72-cortexa53-amd-linux 
 # Versal Common Image SDK setup (cross-compiler + sysroot)
-COMMON_IMAGE_ENV=/opt/AMD/common_devices/xilinx-versal-common-v2025.1/environment-setup-cortexa72-cortexa53-amd-linux
+COMMON_IMAGE_ENV=/opt/petalinux/2025.1/environment-setup-cortexa72-cortexa53-amd-linux 
 
 echo "Sourcing Vitis..."
 source $VITIS
