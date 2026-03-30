@@ -77,9 +77,15 @@ make sim TOP_TB=tb_example_and_gate RTL="example_and_gate.v" TB="testbench/tb_ex
 
 Example 2 – Kernel-level simulation with multiple RTL files:
 ```bash
-
 make sim TOP_TB=tb_krnl_and RTL="example_and_gate.v krnl_and.v" TB="testbench/tb_krnl_and.v"
 ```
+
+Vector add example: 
+```bash
+make clean
+make sim TOP_TB=tb_krnl_vadd_stream_axis RTL="example_vector_add.v krnl_vadd_stream.v" TB="testbench/tb_krnl_vadd_stream.v"
+```
+
 Logs and Outputs
 ----------------
 After running simulation, logs are available under build/:
@@ -141,7 +147,7 @@ make xo RTL="example_and_gate.v krnl_and.v" KERNEL_NAME=krnl_and KERNEL_IF=axili
 Example 2 – Package an AXIS kernel:
 
 ```bash
-make xo RTL="krnl_vadd_stream.v" KERNEL_NAME=krnl_vadd_stream KERNEL_IF=axis
+make xo RTL="example_vector_add.v krnl_vadd_stream.v" KERNEL_NAME=krnl_vadd_stream KERNEL_IF=axis
 ```
 
 ------------------------------------------------------------

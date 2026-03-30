@@ -68,7 +68,7 @@ $(BUILD)/xsim.ok: $(BUILD)/xelab.ok
 # ------------------------------------------------------------
 
 KERNEL_NAME ?= krnl_and
-PART=xcvc1902-vsvd1760-2MP-e-S
+PART=xcu55c-fsvh2892-2L-e
 
 XO     := $(BUILD)/$(KERNEL_NAME).xo
 IP_DIR := $(BUILD)/$(KERNEL_NAME)_ip

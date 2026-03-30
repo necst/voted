@@ -34,7 +34,7 @@ help::
 	$(ECHO) ""
 
 
-PLATFORM ?= xilinx_vck5000_gen4x8_qdma_2_202220_1
+PLATFORM ?= xilinx_u55c_gen3x16_xdma_3_202210_1
 
 TARGET := hw
 
@@ -61,11 +61,11 @@ XCLBIN  := overlay_$(TARGET).xclbin
 
 all: $(XCLBIN)
 
-$(XCLBIN): $(XSA_OBJ) $(if $(filter 1,$(USE_AIE)),$(AIE_OBJ),)
-	v++ -p -t $(TARGET) -f $(PLATFORM) $^ -o $@ --package.boot_mode=ospi
 
-$(XSA_OBJ): $(INPUTS)
-	v++ -l $(XOCCFLAGS) $(XOCCLFLAGS) --config xclbin_overlay.cfg -o $@ $^
+all: $(XCLBIN)
+
+$(XCLBIN): $(XOS)
+	v++ --link $(XOCCFLAGS) $(XOCCLFLAGS) --config xclbin_overlay.cfg $^ -o ${XCLBIN}
 	
 clean:
 	$(RM) -r _x .Xil .ipcache .local *.ltx *.log *.sh *.jou *.info *.xclbin *.xo.* *.str *.xsa *.cdo.bin *bif *BIN *.package_summary *.link_summary *.txt *.bin && rm -rf cfg emulation_data sim
