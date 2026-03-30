@@ -41,7 +41,7 @@ static void mkdir_p(const std::string &dir) {
 
 int main(int argc, char *argv[]) {
   // Keep the same default size used in your existing unit testbenches.
-  const int size = 32;
+  const int size = 128;
 
   // ------------------------------------------------------------------------------------
   // (1) Generate the AIE input file (same path/content/format as
@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
   int mismatches = 0;
 
   for (int idx = 0; idx < size; idx++) {
-    int32_t expected = static_cast<int32_t>(input[idx]);
+    int32_t expected = static_cast<int32_t>(input[idx]) + 2;
     if (buffer[idx] != expected) {
       if (mismatches < 20) {
         std::cerr << "Mismatch @ " << idx << ": in=" << input[idx]
