@@ -57,7 +57,7 @@ sink_from_aie_$(TARGET).xo: ./sink_from_aie.cpp
 
 # as every C++ program, you may add libraies like: `pkg-config --libs opencv` `pkg-config --cflags opencv`
 testbench_sink_from_aie: testbench/testbench_sink_from_aie.cpp sink_from_aie.cpp
-	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
 	    testbench/testbench_sink_from_aie.cpp sink_from_aie.cpp \
 	    -o testbench/$@
 	
@@ -65,7 +65,7 @@ run_testbench_sink_from_aie: testbench_sink_from_aie
 	cd testbench && ./testbench_sink_from_aie 
 
 testbench_setupaie: testbench/testbench_setupaie.cpp setup_aie.cpp
-	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
 	    testbench/testbench_setupaie.cpp setup_aie.cpp \
 	    -o testbench/$@
 
@@ -73,12 +73,12 @@ run_testbench_setupaie: testbench_setupaie
 	cd testbench && ./testbench_setupaie
 	
 testbench_e2e: testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp
-	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
 	    testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp \
 	    -o testbench/$@
 
 testbench_e2e: testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp
-	$(CXX) -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
+	g++ -std=c++14 -I. -I$(XILINX_HLS)/include -O2 \
 	    testbench/testbench_e2e.cpp setup_aie.cpp sink_from_aie.cpp \
 	    -o testbench/$@
 
