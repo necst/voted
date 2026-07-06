@@ -206,6 +206,19 @@ cd package_output
 ```
 **WARNING** I am getting issues (QEMU HANGING) when lunching multiple QEMU. Check all processes exited before running new QEMUs from the same folder. 
 
+## 🛠 Step 6 — Run HW
+
+### Setup
+
+1. Serial connection to the VEK280. Use the USB-C port on the VEK280, the USB-A on the laptop, and the COMM port with the LOWEST ID. 
+2. Flush the SD Card: use the SD eraser to free the SD and balena etcher to load the SD.img. Note that only the SD.img is needed
+3. Login into the device. Username is Petalinux. Password can be set. The file to run should be in /run/media/mm..cblk0
+
+
+
+
+
+
 
 
 
