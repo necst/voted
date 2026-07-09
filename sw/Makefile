@@ -17,15 +17,14 @@ BASE_PLATFORM ?= ${PLATFORM_REPO_PATHS}/xilinx_vek280_base_202510_1/xilinx_vek28
 GCC_FLAGS := -Wall -c -std=c++17 -Wno-int-to-pointer-cast \
              --sysroot=$(SDKTARGETSYSROOT)
 
-GCC_INCLUDES := -I$(SDKTARGETSYSROOT)/usr/include \
-                -I$(SDKTARGETSYSROOT)/usr/include/xrt \
+GCC_INCLUDES := -I$(SDKTARGETSYSROOT)/usr/include/xrt \
                 -I$(XILINX_VITIS)/aietools/include \
                 -I$(XILINX_VITIS)/include \
                 -I../aie \
                 -I./
 
 GCC_LIB := -lxrt_coreutil \
-           -L${XILINX_XRT}/lib \
+		 -L$(SDKTARGETSYSROOT)/usr/lib \
            --sysroot=${SDKTARGETSYSROOT}
 
 ################################################################################

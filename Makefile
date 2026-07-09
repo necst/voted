@@ -53,7 +53,7 @@ hw_link:
 #
 ## Build software object
 build_sw: 
-	@make -C ./sw all 
+	@make -C ./sw build_sw 
 #
 testbench_all:
 	@make -C ./aie aie_compile_x86

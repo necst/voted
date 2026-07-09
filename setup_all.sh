@@ -15,11 +15,11 @@ source $VITIS
 echo "Sourcing XRT..."
 source $XRT
 
-echo "Sourcing Petalinux..."
-source $PETALINUX
-
 echo "Unsetting LD_LIBRARY_PATH for SDK safety..."
 unset LD_LIBRARY_PATH
+
+echo "Sourcing Petalinux..."
+source $PETALINUX
 
 #echo "Sourcing Versal Common Image SDK environment..."
 #source $COMMON_IMAGE_ENV
