@@ -94,6 +94,8 @@ This is still an under development feature, it can be found in aie_template_gene
 
 ## Related Pubblications
 
+- Sorrentino, G., Galfano, P.S., Di Salvo, C., D’Arnese, E. and Conficconi, D., 2026, May. Adaptive aie–pl systems for efficient end-to-end pyramidal 3d image registration. In 2026 IEEE 34th Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM) (pp. 194-203). IEEE. https://doi.org/10.1109/FCCM68464.2026.00037
+  
 - G. Sorrentino, P. S. Galfano, E. D'Arnese and D. Conficconi, "Soaring with TRILLI: An HW/SW Heterogeneous Accelerator for Multi-Modal Image Registration," in 2025 IEEE 33rd Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM), Fayetteville, AR, USA, 2025, pp. 56-65, doi: 10.1109/FCCM62733.2025.00040.
 
 - Cabai, E., Sorrentino, G., & Santambrogio, M. D., Conficconi, D.(2025). A Hardware/Software Co-Design Approach for Versal-Based K-means Acceleration [Poster]. In Proceedings of the 2024 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). IEEE.
